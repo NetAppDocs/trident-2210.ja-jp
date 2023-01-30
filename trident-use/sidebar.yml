@@ -1,0 +1,61 @@
+---
+section: trident-use
+title: Astra Trident を使用
+entries:
+- title: ワーカーノードを準備します
+  url: "/trident-use/worker-node-prep.html"
+- title: バックエンドを設定
+  url: "/trident-use/backends.html"
+  entries:
+  - title: ANF バックエンドを設定します
+    url: "/trident-use/anf.html"
+    entries:
+    - title: ANFバックエンドを設定するための準備をします
+      url: "/trident-use/anf-prep.html"
+    - title: ANF設定オプションと例
+      url: "/trident-use/anf-examples.html"
+  - title: GCP バックエンドの CVS を設定します
+    url: "/trident-use/gcp.html"
+  - title: NetApp HCI または SolidFire バックエンドを設定します
+    url: "/trident-use/element.html"
+  - title: バックエンドに ONTAP SAN ドライバを設定します
+    url: "/trident-use/ontap-san.html"
+    entries:
+    - title: バックエンドにONTAP SANドライバを設定する準備をします
+      url: "/trident-use/ontap-san-prep.html"
+    - title: ONTAP のSAN構成オプションと例
+      url: "/trident-use/ontap-san-examples.html"
+  - title: バックエンドに ONTAP NAS ドライバを設定します
+    url: "/trident-use/ontap-nas.html"
+    entries:
+    - title: ONTAP NASドライバを使用してバックエンドを設定する準備をします
+      url: "/trident-use/ontap-nas-prep.html"
+    - title: ONTAP NASの設定オプションと例
+      url: "/trident-use/ontap-nas-examples.html"
+  - title: Amazon FSX for NetApp ONTAP で Astra Trident を使用
+    url: "/trident-use/trident-fsx.html"
+- title: kubectl を使用してバックエンドを作成します
+  url: "/trident-use/backend-kubectl.html"
+- title: kubectl を使用してバックエンド管理を実行します
+  url: "/trident-use/backend_ops_kubectl.html"
+- title: tridentctl を使用してバックエンド管理を実行します
+  url: "/trident-use/backend_ops_tridentctl.html"
+- title: バックエンド管理オプション間を移動します
+  url: "/trident-use/backend_options.html"
+- title: ストレージクラスを管理する
+  url: "/trident-use/manage-stor-class.html"
+- title: ボリューム操作を実行する
+  url: "/trident-use/vol-operations.html"
+  entries:
+  - title: CSI トポロジを使用します
+    url: "/trident-use/csi-topology.html"
+  - title: スナップショットを操作します
+    url: "/trident-use/vol-snapshots.html"
+  - title: ボリュームを展開します
+    url: "/trident-use/vol-expansion.html"
+  - title: ボリュームをインポート
+    url: "/trident-use/vol-import.html"
+- title: ネームスペース間でNFSボリュームを共有します
+  url: "/trident-use/volume-share.html"
+- title: Astra Trident を監視
+  url: "/trident-use/monitor-trident.html"

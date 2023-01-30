@@ -1,0 +1,173 @@
+---
+sidebar: sidebar 
+permalink: trident-get-started/kubernetes-deploy.html 
+keywords: deploy, astra trident, methods, operator, tridentctl, helm 
+summary: 'Tridentのオペレータが、またはと連携してAstra Tridentを導入できます `tridentctl`。' 
+---
+= 導入の概要
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Tridentのオペレータが、またはと連携してAstra Tridentを導入できます `tridentctl`。
+
+
+NOTE: 22.04 リリース以降、 Astra Trident がインストールされるたびに AES キーが再生成されなくなりました。今回のリリースでは、 Astra Trident がインストールする新しいシークレットオブジェクトが、インストール全体で維持されます。つまり、 `tridentctl` 22.04では、以前のバージョンのTridentをアンインストールできますが、それより前のバージョンでは22.04のインストールをアンインストールできません。
+
+
+
+== Astra Tridentに関する重要な情報22.10
+
+* Astra Trident 22.10.*にアップグレードする前に、次の重要な情報をお読みください
+
+[WARNING]
+.<strong>Astra Tridentに関する重要な情報22.10</strong>
+====
+* TridentでKubernetes 1.25がサポートされるようになりました。Kubernetes 1.25にアップグレードする前に、Astra Trident 22.10にアップグレードする必要があります。
+* Astra Tridentは、SAN環境でマルチパス構成を厳密に使用するよう強制し、推奨値をに設定するようになりました `find_multipaths: no` multipath.confファイル内。
++
+非マルチパス構成またはを使用 `find_multipaths: yes` または `find_multipaths: smart` multipath.confファイルの値が原因でマウントが失敗します。Tridentはの使用を推奨しています `find_multipaths: no` 21.07リリース以降
+
+
+
+====
+
+
+== 導入方法を選択します
+
+使用する導入方法を決定するには、次の点を考慮してください。
+
+
+
+=== Tridentのオペレータが対応するタイミング
+
+。 link:kubernetes-deploy-operator.html["Trident オペレータ"^] は、 Astra Trident のリソースを動的に管理し、セットアップフェーズを自動化する優れた方法です。いくつかの前提条件を満たす必要があります。を参照してください link:requirements.html["要件"^]。
+
+Trident オペレータには、以下に示すような利点があります。
+
+
+
+==== 自己回復機能
+
+Trident の Astra インストールを監視し、導入が削除されたときや誤って変更された場合など、問題に対処する手段を積極的に講じることができます。オペレータが配置として設定されている場合は、「」を参照してください `trident-operator-<generated-id>` ポッドが作成されました。このポッドでは、を関連付けます `TridentOrchestrator` Astra TridentをインストールしたCRでは、常に1つのアクティブな状態が保証されます `TridentOrchestrator`。つまり、オペレータは、 Astra Trident のインスタンスがクラスタ内に 1 つしかないことを確認し、セットアップを制御して、インストールがべきでないことを確認します。インストールに変更が加えられると（展開またはノードのデミスタなど）、オペレータはそれらを識別し、個別に修正します。
+
+
+
+==== 既存のインストール環境を簡単に更新できます
+
+既存の展開をオペレータと簡単に更新できます。を編集するだけで済みます `TridentOrchestrator` CRを使用してインストールを更新します。たとえば、 Astra Trident を有効にしてデバッグログを生成する必要があるシナリオを考えてみましょう。
+
+これを行うには、にパッチを適用します `TridentOrchestrator` をクリックして設定します `spec.debug` 終了： `true`：
+
+[listing]
+----
+kubectl patch torc <trident-orchestrator-name> -n trident --type=merge -p '{"spec":{"debug":true}}'
+----
+実行後 `TridentOrchestrator` が更新され、オペレータが既存のインストールの更新とパッチを処理します。これにより、新しいポッドの作成がトリガーされ、それに応じてインストールが変更される場合があります。
+
+
+
+==== Kubernetes のアップグレードを自動的に処理
+
+Kubernetes バージョンのクラスタをサポート対象バージョンにアップグレードすると、オペレータが既存の Astra Trident インストールを自動的に更新し、 Kubernetes バージョンの要件を確実に満たすように変更します。
+
+
+NOTE: クラスタがサポート対象外のバージョンにアップグレードされた場合、オペレータによって Astra Trident はインストールされません。Astra Trident がすでにオペレータとともにインストールされている場合、サポート対象外の Kubernetes バージョンに Astra Trident がインストールされていることを示す警告が表示されます。
+
+
+
+==== BlueXP（旧Cloud Manager）を使用したKubernetesクラスタの管理
+
+を使用 link:https://docs.netapp.com/us-en/cloud-manager-kubernetes/concept-kubernetes.html["Astra TridentでBlueXPを使用"^]では、最新バージョンのAstra Tridentにアップグレードし、ストレージクラスを追加して管理し、作業環境に接続し、Cloud Backup Service を使用して永続的ボリュームをバックアップすることができます。BlueXPは、Tridentオペレータを使用したAstra Tridentの導入を、手動またはHelmを使用してサポートしています。
+
+
+
+=== Helmを使用する状況
+
+Helm を使用して管理している他のアプリケーションが Astra Trident 21.01 以降である場合は、 Helm を使用して導入を管理することもできます。
+
+
+
+=== を使用する状況 `tridenctl`
+
+既存の環境をにアップグレードする必要がある場合や、高度にカスタマイズする場合は、の使用を検討してください link:kubernetes-deploy-tridentctl.html["Tridentctl"^]。これは、従来の方法であった Astra Trident を導入する方法です。
+
+
+
+== 導入方法間での移動に関する考慮事項
+
+導入方法を切り替える必要があるシナリオを想像するのは難しいことではありません。から移動する前に、次の点を考慮してください `tridentctl` オペレータベースの展開への展開、またはその逆の展開：
+
+* Astra Trident のアンインストールには、常に同じ方法を使用します。を使用してを導入した場合 `tridentctl`を使用する場合は、適切なバージョンのを使用する必要があります `tridentctl` Astra Tridentをアンインストールするためのバイナリ。同様に、演算子を使用してを配置する場合は、を編集する必要があります `TridentOrchestrator` CRおよびSET `spec.uninstall=true` Astra Tridentをアンインストールする方法
+* オペレータベースの導入環境で、削除して使用する場合 `tridentctl` Astra Tridentを導入するには、まずを編集する必要があります `TridentOrchestrator` をクリックして設定します `spec.uninstall=true` Astra Tridentをアンインストールする方法次に、を削除します `TridentOrchestrator` オペレータによる導入も可能です。その後、を使用してをインストールできます `tridentctl`。
+* オペレータベースの手動導入環境で、 Helm ベースの Trident オペレータ環境を使用する場合は、最初に手動でオペレータをアンインストールしてから Helm インストールを実行する必要があります。これにより、 Helm は必要なラベルとアノテーションを使用して Trident オペレータを導入できます。これを行わないと、 Helm ベースの Trident オペレータの導入が失敗し、ラベル検証エラーとアノテーション検証エラーが表示されます。を使用する場合は `tridentctl`- Helmベースの展開を使用すると、問題を発生させずに導入できます。
+
+
+
+
+== 導入モードを理解する
+
+Trident を導入する方法は 3 種類あります。
+
+
+
+=== 標準的な導入
+
+Trident を Kubernetes クラスタに導入すると、 Astra Trident インストーラで次の 2 つの作業を実行できます。
+
+* インターネット経由でコンテナイメージを取得しています
+* 導入環境とノードのデプロイを作成し、 Kubernetes クラスタ内のすべての対象ノードで Astra Trident ポッドがスピンアップする。
+
+
+このような標準的な導入は、次の 2 つの方法で実行できます。
+
+* を使用します `tridentctl install`
+* Trident 演算子を使用する。Trident オペレータは、手動で導入することも、 Helm を使用して導入することもできます。
+
+
+このインストールモードは、 Astra Trident をインストールする最も簡単な方法であり、ネットワークの制限を課すことのないほとんどの環境で機能します。
+
+
+
+=== オフラインでの導入
+
+エアギャップ展開を実行するには、を使用します `--image-registry` 呼び出し時にフラグを設定します `tridentctl install` をクリックして、プライベートイメージレジストリを指定します。Tridentのオペレータを使用して導入する場合は、と指定することもできます `spec.imageRegistry` をクリックします `TridentOrchestrator`。このレジストリにはが含まれている必要があります https://hub.docker.com/r/netapp/trident/["Trident の画像"^]、 https://hub.docker.com/r/netapp/trident-autosupport/["Trident AutoSupport の画像"^]および CSI のサイドカーイメージ（ Kubernetes バージョンで必要な場合）
+
+を使用して導入をカスタマイズできます `tridentctl` Tridentのリソースのマニフェストを生成します。導入、開始、サービスアカウント、 Astra Trident がインストールの一部として作成するクラスタロールが含まれます。
+
+導入環境のカスタマイズの詳細については、次のリンクを参照してください。
+
+* link:kubernetes-customize-deploy.html["オペレータベースの展開をカスタマイズします"^]
+* 
+
+
+
+IMPORTANT: プライベートイメージリポジトリを使用する場合は、を追加する必要があります `/sig-storage` プライベートレジストリURLの末尾に移動します。のプライベートレジストリを使用する場合 `tridentctl` は、を使用する必要があります `--trident-image` および `--autosupport-image` と組み合わせて使用します `--image-registry`。Tridentオペレータを使用してAstra Tridentを導入する場合は、Orchestrator CRに含まれていることを確認します `tridentImage` および `autosupportImage` をインストールパラメータに指定します。
+
+
+
+=== リモート導入
+
+次に、リモート導入プロセスの概要を示します。
+
+* 適切なバージョンのを導入します `kubectl` Astra Tridentの導入元となるリモートマシン。
+* Kubernetesクラスタから構成ファイルをコピーし、を設定します `KUBECONFIG` リモートマシンの環境変数。
+* を開始します `kubectl get nodes` コマンドを使用して、必要なKubernetesクラスタに接続できることを確認します。
+* 標準のインストール手順を使用して、リモートマシンからの導入を完了します。
+
+
+
+
+== その他の既知の設定オプション
+
+VMware Tanzu Portfolio 製品に Astra Trident をインストールする場合：
+
+* クラスタが特権ワークロードをサポートしている必要があります。
+* 。 `--kubelet-dir` フラグはkubeletディレクトリの場所に設定する必要があります。デフォルトはです `/var/vcap/data/kubelet`。
++
+を使用してkubeletの場所を指定します `--kubelet-dir` は、Trident Operator、Helm、およびで動作することがわかっています `tridentctl` 導入：
+
+

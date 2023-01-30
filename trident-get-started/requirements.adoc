@@ -1,0 +1,263 @@
+---
+sidebar: sidebar 
+permalink: trident-get-started/requirements.html 
+keywords: trident requirements, supported front ends, supported backends, kubernetes cluster, cluster requirements, version requirements, supported versions, host configuration, host os, system configuration, host operating system, fsx 
+summary: サポートされるフロントエンド、バックエンド、およびホスト構成を確認することから始めましょう。 
+---
+= 要件
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+サポートされるフロントエンド、バックエンド、およびホスト構成を確認することから始めましょう。
+
+
+NOTE: Trident が使用するポートについては、を参照してください link:../trident-reference/ports.html["こちらをご覧ください"]。
+
+
+
+== Astra Tridentに関する重要な情報22.10
+
+* Astra Trident 22.10.*にアップグレードする前に、次の重要な情報をお読みください
+
+[WARNING]
+.<strong>Astra Tridentに関する重要な情報22.10</strong>
+====
+* TridentでKubernetes 1.25がサポートされるようになりました。Kubernetes 1.25にアップグレードする前に、Astra Trident 22.10にアップグレードする必要があります。
+* Astra Tridentは、SAN環境でマルチパス構成を厳密に使用するよう強制し、推奨値をに設定するようになりました `find_multipaths: no` multipath.confファイル内。
++
+非マルチパス構成またはを使用 `find_multipaths: yes` または `find_multipaths: smart` multipath.confファイルの値が原因でマウントが失敗します。Tridentはの使用を推奨しています `find_multipaths: no` 21.07リリース以降
+
+
+
+====
+
+
+== サポートされるフロントエンド（オーケストレーションツール）
+
+Trident Astra は、次のような複数のコンテナエンジンとオーケストレーションツールをサポート
+
+* Anthosオンプレミス（VMware）とAnthos：ベアメタル1.9、1.10、1.11
+* Kubernetes 1.20-1.25
+* Mirantis Kubernetes Engine 3.5
+* OpenShift 4.8、4.9、4.10、4.11
+
+
+Trident オペレータは、次のリリースでサポートされています。
+
+* Anthosオンプレミス（VMware）とAnthos：ベアメタル1.9、1.10、1.11
+* Kubernetes 1.20-1.25
+* OpenShift 4.8、4.9、4.10、4.11
+
+
+Astra Trident は、 Google Kubernetes Engine （ GKE ）、 Amazon Elastic Kubernetes Services （ EKS ）、 Azure Kubernetes Service （ AKS ）、 Rancher 、 VMware Tanzu Portfolio など、フルマネージドで自己管理型の Kubernetes サービスが数多く提供されています。
+
+
+
+== サポートされるバックエンド（ストレージ）
+
+Astra Trident を使用するには、次のバックエンドを 1 つ以上サポートする必要があります。
+
+* NetApp ONTAP 対応の Amazon FSX
+* Azure NetApp Files の特長
+* Cloud Volumes ONTAP
+* Cloud Volumes Service for GCP
+* FAS/AFF / Select 9.3 以降
+* ネットアップオール SAN アレイ（ ASA ）
+* NetApp HCI / Elementソフトウェア11以降
+
+
+
+
+== 機能の要件
+
+次の表は、このリリースの Astra Trident で利用できる機能と、サポートする Kubernetes のバージョンをまとめたものです。
+
+[cols="3"]
+|===
+| フィーチャー（ Feature ） | Kubernetes のバージョン | フィーチャーゲートが必要ですか？ 
+
+
+| CSI Trident  a| 
+1.20-1.25
+ a| 
+いいえ
+
+
+
+| ボリューム Snapshot  a| 
+1.20-1.25
+ a| 
+いいえ
+
+
+
+| ボリューム Snapshot からの PVC  a| 
+1.20-1.25
+ a| 
+いいえ
+
+
+
+| iSCSI PV のサイズ変更  a| 
+1.20-1.25
+ a| 
+いいえ
+
+
+
+| ONTAP 双方向 CHAP  a| 
+1.20-1.25
+ a| 
+いいえ
+
+
+
+| 動的エクスポートポリシー  a| 
+1.20-1.25
+ a| 
+いいえ
+
+
+
+| Trident のオペレータ  a| 
+1.20-1.25
+ a| 
+いいえ
+
+
+
+| 自動ワーカーノード準備（ベータ版）  a| 
+1.20-1.25
+ a| 
+いいえ
+
+
+
+| CSI トポロジ  a| 
+1.20-1.25
+ a| 
+いいえ
+
+|===
+
+
+== テスト済みのホストオペレーティングシステム
+
+Astra Tridentは、特定のオペレーティングシステムを正式にサポートしているわけではありませんが、動作確認済みの特徴は次のとおりです。
+
+* OpenShift Container Platform でサポートされている Red Hat CoreOS （ RHCOS ）バージョン
+* RHELまたはCentOS 7.
+* Ubuntu 18.04以降（最新22.04）
+* Windows Server 2019
+
+
+デフォルトでは、 Astra Trident はコンテナで実行されるため、任意の Linux ワーカーで実行されます。ただし、その場合、使用するバックエンドに応じて、標準の NFS クライアントまたは iSCSI イニシエータを使用して Astra Trident が提供するボリュームをマウントできる必要があります。
+
+。 `tridentctl` ユーティリティは、これらのLinuxディストリビューションでも動作します。
+
+
+
+== ホストの設定
+
+使用しているバックエンドによっては、 NFS や iSCSI のユーティリティをクラスタ内のすべてのワーカーにインストールする必要があります。を参照してください link:../trident-use/worker-node-prep.html["こちらをご覧ください"^] を参照してください。
+
+
+
+== ストレージシステムの構成：
+
+Trident を使用するには、バックエンド構成でストレージシステムを使用する前に、一部の変更が必要になることがあります。を参照してください link:../trident-use/backends.html["こちらをご覧ください"^] を参照してください。
+
+
+
+== コンテナイメージと対応する Kubernetes バージョン
+
+エアギャップのある環境では、 Astra Trident のインストールに必要なコンテナイメージを次の表に示します。を使用します `tridentctl images` 必要なコンテナイメージのリストを確認するコマンド。
+
+[cols="2"]
+|===
+| Kubernetes のバージョン | コンテナイメージ 
+
+
+| v1.20.0  a| 
+* ネットアップ/ Trident：22.10.0
+* NetApp / Trident -autosupport：22.10
+* k83.io/sig-storage/csi-Provisioner：v3.3.0
+* k8s .io/sig-storage/csi-attacher: v4.0.0
+* k81.io/sig-storage/csi-resizer：v1.6.0
+* k83.io/sig-storage/csi-snapshotter：v3.0.3
+* k81.io/sig-storage/csi-node-driver-registrar: v2.5.1
+* ネットアップ/ Tridentオペレータ：22.10.0（オプション）
+
+
+
+
+| v1.21.0  a| 
+* ネットアップ/ Trident：22.10.0
+* NetApp / Trident -autosupport：22.10
+* k83.io/sig-storage/csi-Provisioner：v3.3.0
+* k8s .io/sig-storage/csi-attacher: v4.0.0
+* k81.io/sig-storage/csi-resizer：v1.6.0
+* k83.io/sig-storage/csi-snapshotter：v3.0.3
+* k81.io/sig-storage/csi-node-driver-registrar: v2.5.1
+* ネットアップ/ Tridentオペレータ：22.10.0（オプション）
+
+
+
+
+| v1.22.0  a| 
+* ネットアップ/ Trident：22.10.0
+* NetApp / Trident -autosupport：22.10
+* k83.io/sig-storage/csi-Provisioner：v3.3.0
+* k8s .io/sig-storage/csi-attacher: v4.0.0
+* k81.io/sig-storage/csi-resizer：v1.6.0
+* k83.io/sig-storage/csi-snapshotter：v3.0.3
+* k81.io/sig-storage/csi-node-driver-registrar: v2.5.1
+* ネットアップ/ Tridentオペレータ：22.10.0（オプション）
+
+
+
+
+| v1.3.0  a| 
+* ネットアップ/ Trident：22.10.0
+* NetApp / Trident -autosupport：22.10
+* k83.io/sig-storage/csi-Provisioner：v3.3.0
+* k8s .io/sig-storage/csi-attacher: v4.0.0
+* k81.io/sig-storage/csi-resizer：v1.6.0
+* k83.io/sig-storage/csi-snapshotter：v3.0.3
+* k81.io/sig-storage/csi-node-driver-registrar: v2.5.1
+* ネットアップ/ Tridentオペレータ：22.10.0（オプション）
+
+
+
+
+| v1.24.0  a| 
+* ネットアップ/ Trident：22.10.0
+* NetApp / Trident -autosupport：22.10
+* k83.io/sig-storage/csi-Provisioner：v3.3.0
+* k8s .io/sig-storage/csi-attacher: v4.0.0
+* k81.io/sig-storage/csi-resizer：v1.6.0
+* k83.io/sig-storage/csi-snapshotter：v3.0.3
+* k81.io/sig-storage/csi-node-driver-registrar: v2.5.1
+* ネットアップ/ Tridentオペレータ：22.10.0（オプション）
+
+
+
+
+| v1.25.0  a| 
+* ネットアップ/ Trident：22.10.0
+* NetApp / Trident -autosupport：22.10
+* k83.io/sig-storage/csi-Provisioner：v3.3.0
+* k8s .io/sig-storage/csi-attacher: v4.0.0
+* k81.io/sig-storage/csi-resizer：v1.6.0
+* k83.io/sig-storage/csi-snapshotter：v3.0.3
+* k81.io/sig-storage/csi-node-driver-registrar: v2.5.1
+* ネットアップ/ Tridentオペレータ：22.10.0（オプション）
+
+
+|===
+
+NOTE: Kubernetesバージョン1.20以降では、検証済みを使用してください `registry.k8s.gcr.io/sig-storage/csi-snapshotter:v6.x` イメージは、の場合にのみ作成します `v1` のバージョンがを処理しています `volumesnapshots.snapshot.storage.k8s.gcr.io` CRD。状況に応じて `v1beta1` バージョンは、の有無にかかわらず、CRDに対応しています `v1` バージョン：検証済みを使用します `registry.k8s.gcr.io/sig-storage/csi-snapshotter:v3.x` イメージ（Image）：

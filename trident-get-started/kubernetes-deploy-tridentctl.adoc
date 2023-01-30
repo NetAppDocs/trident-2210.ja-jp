@@ -1,0 +1,146 @@
+---
+sidebar: sidebar 
+permalink: trident-get-started/kubernetes-deploy-tridentctl.html 
+keywords: deploy, astra trident, methods, tridentctl, windows 
+summary: 'を使用して、TridentのAstraを導入できます `tridentctl`。' 
+---
+= tridentctl を使用して導入します
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+を使用して、Astra Tridentを導入できます `tridentctl`。をよく理解しておくことをお勧めします link:../trident-concepts/intro.html["基本概念"]。をカスタマイズします `tridentctl` 配置については、を参照してください link:kubernetes-customize-deploy-tridentctl.html["tridentctl 展開をカスタマイズします"]。
+
+
+
+== Astra Tridentに関する重要な情報22.10
+
+* Astra Trident 22.10.*にアップグレードする前に、次の重要な情報をお読みください
+
+[WARNING]
+.<strong>Astra Tridentに関する重要な情報22.10</strong>
+====
+* TridentでKubernetes 1.25がサポートされるようになりました。Kubernetes 1.25にアップグレードする前に、Astra Trident 22.10にアップグレードする必要があります。
+* Astra Tridentは、SAN環境でマルチパス構成を厳密に使用するよう強制し、推奨値をに設定するようになりました `find_multipaths: no` multipath.confファイル内。
++
+非マルチパス構成またはを使用 `find_multipaths: yes` または `find_multipaths: smart` multipath.confファイルの値が原因でマウントが失敗します。Tridentはの使用を推奨しています `find_multipaths: no` 21.07リリース以降
+
+
+
+====
+
+
+== 前提条件を確認する
+
+Astra Trident を導入するには、次の前提条件を満たしている必要があります。
+
+* サポート対象のKubernetesクラスタに対するすべての権限。
+* サポートされているネットアップストレージシステムへのアクセス。
+* Kubernetesワーカーノードすべてからボリュームをマウントできます。
+* を搭載したLinuxホスト `kubectl` （または `oc`OpenShiftを使用している場合）Kubernetesクラスタを管理するようにインストールおよび設定します。
+* 。 `KUBECONFIG` 環境変数は、Kubernetesクラスタの構成を指します。
+* 。 link:requirements.html["Astra Trident に必要な機能ゲート"] が有効になります。
+* Kubernetes と Docker Enterprise を併用する場合は、 https://docs.docker.com/ee/ucp/user-access/cli/["CLI へのアクセスを有効にする手順は、ユーザが行ってください"^]。
+
+
+
+
+== ステップ 1 ： Kubernetes クラスタを確認する
+
+Linuxホストにログインし、管理が機能していることを確認します。 link:requirements.html["サポートされる Kubernetes クラスタ"^] また、必要な権限があります。
+
+
+NOTE: OpenShiftで、を使用できます `oc` ではなく `kubectl` 以降に示すすべての例では、を実行して、最初に* system:admin *としてログインする必要があります `oc login -u system:admin` または `oc login -u kube-admin`。
+
+Kubernetes のバージョンを確認するには、次のコマンドを実行します。
+
+[listing]
+----
+kubectl version
+----
+Kubernetesクラスタ管理者の権限を確認するには、次のコマンドを実行します。
+
+[listing]
+----
+kubectl auth can-i '*' '*' --all-namespaces
+----
+Docker Hub のイメージを使用してポッドを起動し、ポッドネットワーク経由でストレージシステムにアクセスできるかどうかを確認するには、次のコマンドを実行します。
+
+[listing]
+----
+kubectl run -i --tty ping --image=busybox --restart=Never --rm -- \
+  ping <management IP>
+----
+Kubernetes サーバのバージョンを確認します。このポートは、 Astra Trident のインストール時に使用します。
+
+
+
+== 手順 2 ：インストーラをダウンロードして展開します
+
+
+NOTE: Trident インストーラは Trident ポッドを作成し、そのステートを維持するために使用される CRD オブジェクトを構成し、プロビジョニングやクラスタホストへのボリュームの接続などのアクションを実行する CSI サイドカーを初期化します。
+
+Tridentインストーラバンドルの最新バージョンは、からダウンロードして展開できます link:https://github.com/NetApp/trident/releases/latest["GitHubの_Assets_sectionを参照してください"^]。
+
+たとえば、最新バージョンが22.10.0の場合、次のようになります。
+
+[listing]
+----
+wget https://github.com/NetApp/trident/releases/download/v22.10.0/trident-installer-22.10.0.tar.gz
+tar -xf trident-installer-22.10.0.tar.gz
+cd trident-installer
+----
+
+
+== 手順 3 ： Astra Trident をインストールする
+
+を実行して、必要なネームスペースにAstra Tridentをインストールします `tridentctl install` コマンドを実行します
+
+[listing]
+----
+./tridentctl install -n trident
+....
+INFO Starting Trident installation.                namespace=trident
+INFO Created service account.
+INFO Created cluster role.
+INFO Created cluster role binding.
+INFO Added finalizers to custom resource definitions.
+INFO Created Trident service.
+INFO Created Trident secret.
+INFO Created Trident deployment.
+INFO Created Trident daemonset.
+INFO Waiting for Trident pod to start.
+INFO Trident pod started.                          namespace=trident pod=trident-csi-679648bd45-cv2mx
+INFO Waiting for Trident REST interface.
+INFO Trident REST interface is up.                 version=22.10.0
+INFO Trident installation succeeded.
+....
+----
+
+NOTE: WindowsノードでAstra Tridentを実行できるようにするには、を追加します `--windows` インストールコマンドへのフラグ： `$ ./tridentctl install --windows -n trident`。
+
+インストーラが完了すると、次のような出力が表示されます。Kubernetesクラスタ内のノードの数によっては、ポッドがさらに存在する場合があります。
+
+[listing]
+----
+kubectl get pod -n trident
+NAME                           READY   STATUS    RESTARTS   AGE
+trident-csi-679648bd45-cv2mx   4/4     Running   0          5m29s
+trident-csi-vgc8n              2/2     Running   0          5m29s
+
+./tridentctl -n trident version
++----------------+----------------+
+| SERVER VERSION | CLIENT VERSION |
++----------------+----------------+
+| 22.10.0        | 22.10.0        |
++----------------+----------------+
+----
+Astra Tridentの設定を完了するには、に進みます link:kubernetes-postdeployment.html["導入後のタスク"]。
+
+インストーラが正常に完了しない場合、または `trident-csi-<generated id>` ステータス* RUNNING *がなく、プラットフォームがインストールされていません。
+
+
+NOTE: 導入時の問題のトラブルシューティングについては、を参照してください link:../troubleshooting.html["トラブルシューティング"]。

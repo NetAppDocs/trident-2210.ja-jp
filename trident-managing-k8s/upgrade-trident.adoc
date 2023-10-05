@@ -34,7 +34,8 @@ NOTE: 5 つ先のリリースにアップグレードするには、複数の手
 IMPORTANT: バージョン19.04以前のアップグレードでは、Astra Trident独自のメタデータを移行する必要があります `etcd` をCRDオブジェクトに追加します。アップグレードの仕組みについては、リリースのドキュメントを確認してください。
 
 
-WARNING: アップグレードするときは、この作業を行うことが重要です `parameter.fsType` インチ `StorageClasses` Astra Tridentが使用。削除して再作成することができます `StorageClasses` 実行前のボリュームの中断はなし。これは、強制の ** 要件 ** です https://kubernetes.io/docs/tasks/configure-pod-container/security-context/["セキュリティコンテキスト"^] SAN ボリュームの場合。。 https://github.com/NetApp/trident/tree/master/trident-installer/sample-input["入力例："^] directory には、などの例があります[`storage-class-basic.yaml.templ`^]および[`storage-class-bronze-default.yaml`^]をクリックします。詳細については、を参照してください link:../trident-rn.html["既知の問題"^]。
+WARNING: アップグレードするときは、この作業を行うことが重要です `parameter.fsType` インチ `StorageClasses` Astra Tridentが使用。削除して再作成することができます `StorageClasses` 実行前のボリュームの中断はなし。これは、強制の ** 要件 ** です https://kubernetes.io/docs/tasks/configure-pod-container/security-context/["セキュリティコンテキスト"^] SAN ボリュームの場合。。 https://github.com/NetApp/trident/tree/master/trident-installer/sample-input["入力例："^] directory には、などの例があります[`storage-class-basic.yaml.templ`^]および[`storage-class-bronze-default.yaml`^]をクリックします。
+詳細については、を参照してください link:../trident-rn.html["既知の問題"^]。
 
 
 

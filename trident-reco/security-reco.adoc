@@ -20,7 +20,8 @@ summary: ここに記載された推奨事項に従って、 Astra Trident の�
 
 アプリケーション、アプリケーション管理者、ユーザ、および管理アプリケーションが Astra Trident オブジェクト定義またはポッドにアクセスしないようにして、信頼性の高いストレージを確保し、悪意のあるアクティビティをブロックすることが重要です。
 
-他のアプリケーションやユーザをAstra Tridentから分離するには、Astra Tridentを必ず独自のKubernetesネームスペースにインストールしてください (`trident`）。Astra Trident を独自の名前空間に配置することで、 Kubernetes 管理担当者のみが Astra Trident ポッドにアクセスでき、名前空間 CRD オブジェクトに格納されたアーティファクト（バックエンドや CHAP シークレット（該当する場合）にアクセスできるようになります。Astra Tridentのネームスペースにアクセスできるのは管理者だけであることを確認してから、にアクセスできるようにしてください `tridentctl` アプリケーション：
+他のアプリケーションやユーザをAstra Tridentから分離するには、Astra Tridentを必ず独自のKubernetesネームスペースにインストールしてください (`trident`）。Astra Trident を独自の名前空間に配置することで、 Kubernetes 管理担当者のみが Astra Trident ポッドにアクセスでき、名前空間 CRD オブジェクトに格納されたアーティファクト（バックエンドや CHAP シークレット（該当する場合）にアクセスできるようになります。
+Astra Tridentのネームスペースにアクセスできるのは管理者だけであることを確認してから、にアクセスできるようにしてください `tridentctl` アプリケーション：
 
 
 
@@ -28,7 +29,8 @@ summary: ここに記載された推奨事項に従って、 Astra Trident の�
 
 Astra Tridentは、ONTAP SANワークロードに対して（を使用して）CHAPベースの認証をサポート `ontap-san` および `ontap-san-economy` ドライバ）。ネットアップでは、ホストとストレージバックエンドの間の認証に、双方向 CHAP と Astra Trident を使用することを推奨しています。
 
-SANストレージドライバを使用するONTAP バックエンドの場合、Astra Tridentは双方向CHAPを設定し、を使用してCHAPユーザ名とシークレットを管理できます `tridentctl`。を参照してください link:../trident-use/ontap-san-prep.html["こちらをご覧ください"] ONTAP バックエンドで Trident が CHAP を構成する方法をご確認ください。
+SANストレージドライバを使用するONTAP バックエンドの場合、Astra Tridentは双方向CHAPを設定し、を使用してCHAPユーザ名とシークレットを管理できます `tridentctl`。
+を参照してください link:../trident-use/ontap-san-prep.html["こちらをご覧ください"] ONTAP バックエンドで Trident が CHAP を構成する方法をご確認ください。
 
 
 NOTE: ONTAP バックエンドの CHAP サポートは Trident 20.04 以降で利用可能

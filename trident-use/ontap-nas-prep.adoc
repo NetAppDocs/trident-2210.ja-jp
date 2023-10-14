@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: trident-use/ontap-nas-prep.html 
 keywords: trident backend, ontap nas, ontap-nas, ontap-nas-economy, ontap-nas-flexgroups 
-summary: ONTAP NAS ドライバを使用して ONTAP バックエンドを設定するための準備方法について説明します。 
+summary: ONTAP NASドライバを使用してONTAPバックエンドを構成するための準備方法について説明します。 
 ---
 = ONTAP NASドライバを使用してバックエンドを設定する準備をします
 :hardbreaks:
@@ -11,7 +11,7 @@ summary: ONTAP NAS ドライバを使用して ONTAP バックエンドを設定
 :imagesdir: ../media/
 
 
-ONTAP NAS ドライバを使用して ONTAP バックエンドを設定するための準備方法について説明します。ONTAP バックエンドすべてに対して、 Astra Trident が SVM に少なくとも 1 つのアグリゲートを割り当てておく必要があります。
+ONTAP NASドライバを使用してONTAPバックエンドを構成するための準備方法について説明します。ONTAP バックエンドすべてに対して、 Astra Trident が SVM に少なくとも 1 つのアグリゲートを割り当てておく必要があります。
 
 ONTAP バックエンドすべてに対して、 Astra Trident が SVM に少なくとも 1 つのアグリゲートを割り当てておく必要があります。
 

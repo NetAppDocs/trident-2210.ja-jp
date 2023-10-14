@@ -62,7 +62,9 @@ NOTE: PSSは、Podセキュリティポリシー（PSP）に代わるもので�
 
 | `pod-security.kubernetes.io/enforce`
 
- `pod-security.kubernetes.io/enforce-version` | Tridentコントローラとノードをインストールネームスペースに登録できるようにします。ネームスペースラベルは変更しないでください。 | `enforce: privileged`
+ `pod-security.kubernetes.io/enforce-version` | Tridentコントローラとノードをインストールネームスペースに登録できるようにします。
+
+ネームスペースラベルは変更しないでください。 | `enforce: privileged`
 
 `enforce-version: <version of the current cluster or highest version of PSS tested.>` 
 |===

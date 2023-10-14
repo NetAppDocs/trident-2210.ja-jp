@@ -12,7 +12,7 @@ summary: 'を使用して、TridentのAstraを導入できます `tridentctl`。
 
 
 [role="lead"]
-を使用して、Astra Tridentを導入できます `tridentctl`。をよく理解しておくことをお勧めします link:../trident-concepts/intro.html["基本概念"]。をカスタマイズします `tridentctl` 配置については、を参照してください link:kubernetes-customize-deploy-tridentctl.html["tridentctl 展開をカスタマイズします"]。
+を使用して、Astra Tridentを導入できます `tridentctl`。をよく理解しておくことをお勧めします link:../trident-concepts/intro.html["基本概念"]。をカスタマイズします `tridentctl` 配置については、を参照してください  link:kubernetes-customize-deploy-tridentctl.html["tridentctl 展開をカスタマイズします"]。
 
 
 
@@ -143,4 +143,4 @@ Astra Tridentの設定を完了するには、に進みます link:kubernetes-po
 インストーラが正常に完了しない場合、または `trident-csi-<generated id>` ステータス* RUNNING *がなく、プラットフォームがインストールされていません。
 
 
-NOTE: 導入時の問題のトラブルシューティングについては、を参照してください link:../troubleshooting.html["トラブルシューティング"]。
+NOTE: 導入時の問題のトラブルシューティングについては、を参照してください  link:../troubleshooting.html["トラブルシューティング"]。

@@ -46,11 +46,11 @@ indexpage:
       url: "/trident-use/vol-operations.html"
     - title: Astra Trident を監視
       url: "/trident-use/monitor-trident.html"
-  - title: デモチュートリアル
+  - title: デモとチュートリアル
     links:
     - title: Astra Trident のビデオ
       url: https://tv.netapp.com/detail/video/5995831475001/using-trident-with-kubernetes
-  - title: ブログコミュニティ
+  - title: ブログとコミュニティ
     links:
     - title: Astra ブログ
       url: https://cloud.netapp.com/blog/topic/astra

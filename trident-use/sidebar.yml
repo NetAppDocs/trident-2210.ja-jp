@@ -25,7 +25,7 @@ entries:
       url: "/trident-use/ontap-san-prep.html"
     - title: ONTAP のSAN構成オプションと例
       url: "/trident-use/ontap-san-examples.html"
-  - title: バックエンドに ONTAP NAS ドライバを設定します
+  - title: ONTAP NASドライバを使用したバックエンドの設定
     url: "/trident-use/ontap-nas.html"
     entries:
     - title: ONTAP NASドライバを使用してバックエンドを設定する準備をします

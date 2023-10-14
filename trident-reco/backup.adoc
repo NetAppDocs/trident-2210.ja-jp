@@ -39,7 +39,8 @@ sudo docker run --rm -v /backup:/backup \
 +
 このコマンドは、etcdコンテナをスピンアップしてetcd Snapshotを作成し、に保存します `/backup` ディレクトリ。
 
-. 災害が発生した場合は、 etcd Snapshot を使用して Kubernetes クラスタをスピンアップできます。を使用します `etcdctl snapshot restore` に作成された特定のSnapshotをリストアするコマンド `/var/lib/etcd` フォルダ。リストア後、を確認します `/var/lib/etcd` フォルダにが追加されました `member` フォルダ。次に、の例を示します `etcdctl snapshot restore` コマンドを実行します
+. 災害が発生した場合は、 etcd Snapshot を使用して Kubernetes クラスタをスピンアップできます。
+を使用します `etcdctl snapshot restore` に作成された特定のSnapshotをリストアするコマンド `/var/lib/etcd` フォルダ。リストア後、を確認します `/var/lib/etcd` フォルダにが追加されました `member` フォルダ。次に、の例を示します `etcdctl snapshot restore` コマンドを実行します
 +
 [listing]
 ----
@@ -125,7 +126,7 @@ NOTE: アプリケーション永続ボリュームの場合、デスティネ�
 
 === SnapMirror ボリュームのレプリケーション
 
-ONTAP SnapMirror ボリュームレプリケーションはディザスタリカバリ機能です。この機能を使用すると、ボリュームレベルでプライマリストレージからデスティネーションストレージにフェイルオーバーできます。SnapMirror は、 Snapshot を同期することで、セカンダリストレージ上のプライマリストレージのボリュームレプリカまたはミラーを作成します。
+ONTAP SnapMirrorボリュームレプリケーションはディザスタリカバリ機能で、ボリュームレベルのプライマリストレージからデスティネーションストレージへのフェイルオーバーを可能にします。SnapMirror は、 Snapshot を同期することで、セカンダリストレージ上のプライマリストレージのボリュームレプリカまたはミラーを作成します。
 
 ONTAP の SnapMirror ボリュームレプリケーションのセットアップ手順の概要を次に示します。
 

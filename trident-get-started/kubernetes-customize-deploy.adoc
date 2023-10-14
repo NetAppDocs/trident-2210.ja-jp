@@ -45,7 +45,8 @@ WARNING: `spec.namespace` は、で指定します `TridentOrchestrator` Astra T
 | `k8sTimeout` | Kubernetes 処理のタイムアウト | 30 秒 
 
 
-| `silenceAutosupport` | AutoSupport バンドルをネットアップに自動的に送信しない | いいえ 
+| `silenceAutosupport` | AutoSupportバンドルをNetAppに送信しない
+自動 | いいえ 
 
 
 | `enableNodePrep` | ワーカーノードの依存関係を自動的に管理（ * beta * ） | いいえ 
@@ -54,7 +55,8 @@ WARNING: `spec.namespace` は、で指定します `TridentOrchestrator` Astra T
 | `autosupportImage` | AutoSupport テレメトリのコンテナイメージ | 「NetApp/trident-autosupport：22.10.0」 
 
 
-| `autosupportProxy` | AutoSupport テレメトリを送信するプロキシのアドレス / ポート | "http://proxy.example.com:8888"[] 
+| `autosupportProxy` | AutoSupportを送信するためのプロキシのアドレス/ポート
+テレメータ | "http://proxy.example.com:8888"[] 
 
 
 | `uninstall` | Astra Trident のアンインストールに使用するフラグ | いいえ 
@@ -67,19 +69,21 @@ WARNING: `spec.namespace` は、で指定します `TridentOrchestrator` Astra T
 
 
 | `imageRegistry` | 形式の内部レジストリへのパス
-`<registry FQDN>[:port][/subpath]` | "k83.gcr.io/sig-storage (k8s 1.19+)またはQua.io/k8scsi" 
+`<registry FQDN>[:port][/subpath]` | "k8s.gcr.io/sig-storage（Kubernetes 1.19以降）"
+またはQuay.io/k8scsi 
 
 
 | `kubeletDir` | ホスト上の kubelet ディレクトリへのパス | 「 /var/lib/kubelet 」 
 
 
-| `wipeout` | Astra Trident を完全に削除するために削除するリソースのリスト |  
+| `wipeout` | 完全な削除を実行するために削除するリソースのリスト
+Astra Trident |  
 
 
 | `imagePullSecrets` | 内部レジストリからイメージをプルするシークレット |  
 
 
-| `controllerPluginNodeSelector` | Trident Controller CSI プラグインを実行しているポッドの追加ノードセレクタ。pod.spec.nodeSelector と同じ形式を使用します。 | デフォルトはありません。オプションです 
+| `controllerPluginNodeSelector` | Trident Controller CSI プラグインを実行しているポッドの追加ノードセレクタ。	pod.spec.nodeSelector と同じ形式を使用します。 | デフォルトはありません。オプションです 
 
 
 | `controllerPluginTolerations` | Trident Controller CSI プラグインを実行しているポッドに対する許容値を上書きします。POD .spec.Toleratations と同じ形式を使用します。 | デフォルトはありません。オプションです 

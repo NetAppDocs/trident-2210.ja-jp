@@ -39,7 +39,7 @@ WARNING: 。 `tridentctl` インストーラzipファイルに含まれている
 === の修正
 
 * を使用して作成されたONTAP バックエンドに固有の修正済み問題 `credentials` 22.07.0アップグレード時にフィールドがオンラインにならない（link:https://github.com/NetApp/trident/issues/759["問題 #759"^]）。
-* **Docker：**一部の環境でDockerボリュームプラグインが起動しないという問題 が修正されました（link:https://github.com/NetApp/trident/issues/548["問題 #548"^] および link:https://github.com/NetApp/trident/issues/760["問題 #760"^]）。
+* **Docker：**一部の環境でDockerボリュームプラグインが起動しないという問題 が修正されました（link:https://github.com/NetApp/trident/issues/548["問題#548"^] および link:https://github.com/NetApp/trident/issues/760["問題#760"^]）。
 * レポートノードに属するデータLIFのサブセットのみが公開されるように、ONTAP SANバックエンド固有の修正されたSLM問題 。
 * ボリュームの接続時にiSCSI LUNの不要なスキャンが発生するというパフォーマンス問題 の問題が修正されました。
 * Astra Trident iSCSIワークフロー内で詳細な再試行を削除し、失敗の時間を短縮。外部の再試行間隔も短縮
@@ -85,7 +85,7 @@ WARNING: 。 `tridentctl` インストーラzipファイルに含まれている
 ** Kubernetes **
 
 * HelmまたはTrident OperatorでTridentを設定する際に、ノードセレクタのブール値と数値を処理するように問題 を修正しました。（link:https://github.com/NetApp/trident/issues/700["GitHub問題 #700"^])
-* 非CHAPパスのエラーを処理する問題 を修正したため、失敗した場合kubeletが再試行されるようになりました。 link:https://github.com/NetApp/trident/issues/736["GitHub問題 #736"^])
+* 非CHAPパスのエラーを処理する問題 を修正したため、失敗した場合kubeletが再試行されるようになりました。 link:https://github.com/NetApp/trident/issues/736["GitHub問題#736"^])
 
 
 
@@ -95,8 +95,8 @@ WARNING: 。 `tridentctl` インストーラzipファイルに含まれている
 * CSIイメージのデフォルトレジストリとして、k8s .gcr.ioからregistry.k8s .ioに移行します
 * ONTAP SANボリュームでは、ノード単位のigroupが使用され、LUNがigroupにマッピングされると同時に、これらのノードにアクティブに公開されてセキュリティ体制が強化されます。Tridentがアクティブなワークロードに影響を与えずに安全であると判断した場合、既存のボリュームは新しいigroupスキームに適宜切り替えられます。
 * TridentのインストールにResourceQuotaが含まれ、PriorityClassの消費がデフォルトで制限されたときにTrident DemonSetがスケジュールされるようになりました。
-* ANFドライバへのネットワーク機能のサポートが追加されました。（link:https://github.com/NetApp/trident/issues/717["GitHub問題 #717"^])
-* ONTAP ドライバにTech Previewの自動MetroCluster スイッチオーバー検出機能を追加。（link:https://github.com/NetApp/trident/issues/228["GitHub問題 #228"^])
+* ANFドライバへのネットワーク機能のサポートが追加されました。（link:https://github.com/NetApp/trident/issues/717["GitHub問題#717"^])
+* ONTAP ドライバにTech Previewの自動MetroCluster スイッチオーバー検出機能を追加。（link:https://github.com/NetApp/trident/issues/228["GitHub問題#228"^])
 
 
 
@@ -115,7 +115,8 @@ WARNING: 。 `tridentctl` インストーラzipファイルに含まれている
 * Kubernetes
 +
 ** ノードのポッドから不要なSYS_Admin機能を削除。
-** nodeprepを単純なホスト情報とアクティブなサービス検出に減らし、作業者ノードでNFS / iSCSIサービスが利用可能になったことをベストエフォートで確認します。
+** nodeprepをシンプルなホスト情報とアクティブなサービス検出に絞り込み、ベストエフォートを実現
+ワーカーノードでNFS / iSCSIサービスを使用できることを確認します。
 
 
 
@@ -139,13 +140,13 @@ IMPORTANT: 以前のTridentリリースからアップグレードしてAzure Ne
 
 === の修正
 
-* iSCSI イニシエータ名の解析が改善されました。（link:https://github.com/NetApp/trident/issues/681["GitHub問題 #681"^])
-* CSI ストレージクラスのパラメータが許可されていない問題 を修正しました。（link:https://github.com/NetApp/trident/issues/598["GitHub問題 #598"^])
-* Trident CRD での重複キー宣言が修正されました。（link:https://github.com/NetApp/trident/issues/671["GitHub問題 #671"^])
-* 不正確な CSI スナップショットログを修正しました。（link:https://github.com/NetApp/trident/issues/629["GitHub問題 #629"^]）を選択します
-* 削除したノードでボリュームを非公開にする問題 を修正しました。（link:https://github.com/NetApp/trident/issues/691["GitHub 問題 #691"^])
-* ブロックデバイスでのファイルシステムの不整合の処理が追加されました。（link:https://github.com/NetApp/trident/issues/656["GitHub問題 #656"^])
-* を設定するときに、自動サポート画像をプルする固定問題 `imageRegistry` インストール中にフラグを付けます。（link:https://github.com/NetApp/trident/issues/715["GitHub問題 #715"^])
+* iSCSI イニシエータ名の解析が改善されました。（link:https://github.com/NetApp/trident/issues/681["GitHub問題#681"^])
+* CSI ストレージクラスのパラメータが許可されていない問題 を修正しました。（link:https://github.com/NetApp/trident/issues/598["GitHub問題#598"^])
+* Trident CRD での重複キー宣言が修正されました。（link:https://github.com/NetApp/trident/issues/671["GitHub問題#671"^])
+* 不正確な CSI スナップショットログを修正しました。（link:https://github.com/NetApp/trident/issues/629["GitHub問題#629"^]）を選択します
+* 削除したノードでボリュームを非公開にする問題 を修正しました。（link:https://github.com/NetApp/trident/issues/691["GitHub問題#691"^])
+* ブロックデバイスでのファイルシステムの不整合の処理が追加されました。（link:https://github.com/NetApp/trident/issues/656["GitHub問題#656"^])
+* を設定するときに、自動サポート画像をプルする固定問題 `imageRegistry` インストール中にフラグを付けます。（link:https://github.com/NetApp/trident/issues/715["GitHub問題#715"^])
 * ANF ドライバが複数のエクスポートルールでボリュームのクローニングに失敗した修正済み問題 。
 
 
@@ -153,10 +154,10 @@ IMPORTANT: 以前のTridentリリースからアップグレードしてAzure Ne
 
 === 拡張機能
 
-* Trident のセキュアエンドポイントへのインバウンド接続には、 TLS 1.3 以上が必要です。（link:https://github.com/NetApp/trident/issues/698["GitHub問題 #698"^])
+* Trident のセキュアエンドポイントへのインバウンド接続には、 TLS 1.3 以上が必要です。（link:https://github.com/NetApp/trident/issues/698["GitHub問題#698"^])
 * Trident では、セキュアなエンドポイントからの応答に HSTS ヘッダーが追加されました。
 * Trident では、 Azure NetApp Files の UNIX 権限機能が自動的に有効化されるようになりました。
-* * Kubernetes * ： Trident のデプロイ機能は、システムノードに不可欠な優先度クラスで実行されるようになりました。（link:https://github.com/NetApp/trident/issues/694["GitHub問題 #694"^])
+* * Kubernetes * ： Trident のデプロイ機能は、システムノードに不可欠な優先度クラスで実行されるようになりました。（link:https://github.com/NetApp/trident/issues/694["GitHub問題#694"^])
 
 
 
@@ -173,13 +174,13 @@ E シリーズドライバ（ 20.07 以降無効）が削除されました。
 
 === の修正
 
-* 削除したノードでボリュームを非公開にする問題 を修正しました。（link:https://github.com/NetApp/trident/issues/691["GitHub 問題 #691"])
+* 削除したノードでボリュームを非公開にする問題 を修正しました。（link:https://github.com/NetApp/trident/issues/691["GitHub問題#691"])
 * ONTAP API 応答でアグリゲートスペースを確保するために nil フィールドにアクセスすると、パニックが修正されました。
 
 
 
 
-== 22.01.0 の変更
+== 22.01.0での変更点
 
 
 
@@ -188,7 +189,7 @@ E シリーズドライバ（ 20.07 以降無効）が削除されました。
 * * Kubernetes ：大規模なクラスタのノード登録バックオフ再試行時間を延長します。
 * azure-NetApp-files ドライバが、同じ名前の複数のリソースによって混乱することがあるという解決済みの問題 。
 * ONTAP SAN IPv6 データ LIF が角かっこで指定した場合に機能するようになりました。
-* すでにインポートされているボリュームをインポートしようとすると、 EOF 問題 が返され、 PVC は保留状態になります。（link:https://github.com/NetApp/trident/issues/489["GitHub 問題 #489"])
+* すでにインポートされているボリュームをインポートしようとすると、 EOF 問題 が返され、 PVC は保留状態になります。（link:https://github.com/NetApp/trident/issues/489["GitHub問題#489"])
 * Fixed 問題 ： Astra Trident では、 SolidFire ボリュームで作成される Snapshot が 32 個を超えるとパフォーマンスが低下します。
 * SSL 証明書の作成時に SHA-1 を SHA-256 に置き換えました。
 * リソース名が重複して 1 箇所に操作が制限されるように ANF ドライバを修正しました。
@@ -201,12 +202,12 @@ E シリーズドライバ（ 20.07 以降無効）が削除されました。
 
 * Kubernetes の機能拡張：
 +
-** Kubernetes 1.23 のサポートが追加されました。
+** Kubernetes 1.23のサポートを追加。
 ** Trident Operator または Helm 経由でインストールした場合、 Trident ポッドのスケジュールオプションを追加します。（link:https://github.com/NetApp/trident/issues/651["GitHub 問題 #651"^])
 
 
-* GCP ドライバでリージョン間のボリュームを許可します。（link:https://github.com/NetApp/trident/issues/633["GitHub 問題 #633"^])
-* ANF ボリュームでの「 unixPermissions 」オプションのサポートが追加されました。（link:https://github.com/NetApp/trident/issues/666["GitHub 問題 #666"^])
+* GCP ドライバでリージョン間のボリュームを許可します。（link:https://github.com/NetApp/trident/issues/633["GitHub問題#633"^])
+* ANF ボリュームでの「 unixPermissions 」オプションのサポートが追加されました。（link:https://github.com/NetApp/trident/issues/666["GitHub問題#666"^])
 
 
 
@@ -233,7 +234,7 @@ WARNING: v21.10.0 リリースには、ノードが削除されてから Kuberne
 
 
 
-== 21.10.0 の変更点
+== 21.10.0ノヘンコウテン
 
 
 

@@ -90,7 +90,8 @@ tridentctl logs -l trident-operator
 ----
 trident-operator コンテナのログの末尾には、問題のある場所を示すことができます。たとえば、このような問題の 1 つは、エアーギャップ環境のアップストリームレジストリから必要なコンテナイメージをプルできないことです。
 
-Tridentのインストールが失敗した理由を確認するには、を参照してください `TridentOrchestrator` ステータス。
+Tridentのインストールが失敗した理由を理解するには、
+次の項目を参照してください： `TridentOrchestrator` ステータス。
 
 [listing]
 ----
@@ -126,7 +127,11 @@ Events:
   ----     ------  ----               ----                        -------
   Warning  Error   16s (x2 over 16s)  trident-operator.netapp.io  Trident is bound to another CR 'trident'
 ----
-このエラーは、がすでに存在することを示します `TridentOrchestrator`これはTridentのインストールに使用された機能です。各KubernetesクラスタはTridentのインスタンスを1つしか保持できないため、オペレータはいつでもアクティブなインスタンスを1つしか存在しないようにします `TridentOrchestrator` それは作成できることです。
+このエラーは、がすでに存在することを示します `TridentOrchestrator`
+これはTridentのインストールに使用された機能です。各Kubernetesクラスタで実行できるのは
+Tridentのインスタンスを1つ使用することで、
+アクティブな状態が1つだけ存在する時間 `TridentOrchestrator` それができること
+を作成します。
 
 また、 Trident ポッドのステータスを確認することで、適切でないものがあるかどうかを確認できます。
 
@@ -141,9 +146,12 @@ trident-csi-9q5xc                   1/2     ImagePullBackOff   0          5m18s
 trident-csi-9v95z                   1/2     ImagePullBackOff   0          5m18s
 trident-operator-766f7b8658-ldzsv   1/1     Running            0          8m17s
 ----
-1 つ以上のコンテナイメージがフェッチされなかったため、ポッドが完全に初期化できないことがわかります。
+ポッドを完全に初期化できないことがわかります。
+1つ以上のコンテナイメージが取得されなかったためです。
 
-問題に対処するには、を編集する必要があります `TridentOrchestrator` CR。または、を削除することもできます `TridentOrchestrator`をクリックし、修正された正確な定義を持つ新しい定義を作成します。
+問題に対処するには、を編集する必要があります `TridentOrchestrator` CR。
+または、を削除することもできます `TridentOrchestrator`をクリックし、新しい
+修正された正確な定義を持つもの。
 
 
 

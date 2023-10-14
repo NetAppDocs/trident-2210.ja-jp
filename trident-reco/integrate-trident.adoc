@@ -46,28 +46,33 @@ ONTAP バックエンドドライバは、使用されるプロトコルと、�
 | ONTAP NAS ドライバ | Snapshot | クローン | 動的なエクスポートポリシー | マルチアタッチ | QoS | サイズ変更 | レプリケーション 
 
 
-| `ontap-nas` | はい。 | はい。 | ○脚注： 5[] | はい。 | ○脚注： 1[] | はい。 | ○脚注： 1[] 
+| `ontap-nas` | はい。 | はい。 | ○脚注： 5[] | はい。 | Yesfootnote: 1[] | はい。 | Yesfootnote: 1[] 
 
 
-| `ontap-nas-economy` | ○脚注： 3[] | ○脚注： 3[] | ○脚注： 5[] | はい。 | ○脚注： 3[] | はい。 | ○脚注： 3[] 
+| `ontap-nas-economy` | Yesfootnote: 3[] | Yesfootnote: 3[] | ○脚注： 5[] | はい。 | Yesfootnote: 3[] | はい。 | Yesfootnote: 3[] 
 
 
-| `ontap-nas-flexgroup` | ○脚注： 1[] | いいえ | ○脚注： 5[] | はい。 | ○脚注： 1[] | はい。 | ○脚注： 1[] 
+| `ontap-nas-flexgroup` | Yesfootnote: 1[] | いいえ | ○脚注： 5[] | はい。 | Yesfootnote: 1[] | はい。 | Yesfootnote: 1[] 
 |===
 Astra Trident は、 ONTAP 向けに 2 つの SAN ドライバを提供しています。このドライバの機能は次のとおりです。
 
 [cols="20,10,10,10,10,10,10,10"]
 |===
-| ONTAP SAN ドライバ | Snapshot | クローン | マルチアタッチ | 双方向 CHAP | QoS | サイズ変更 | レプリケーション 
+| ONTAP SANドライバ | Snapshot | クローン | マルチアタッチ | 双方向 CHAP | QoS | サイズ変更 | レプリケーション 
 
 
-| `ontap-san` | はい。 | はい。 | ○脚注： 4[] | はい。 | ○脚注： 1[] | はい。 | ○脚注： 1[] 
+| `ontap-san` | はい。 | はい。 | Yesfootnote: 4[] | はい。 | Yesfootnote: 1[] | はい。 | Yesfootnote: 1[] 
 
 
-| `ontap-san-economy` | はい。 | はい。 | ○脚注： 4[] | はい。 | ○脚注： 3[] | はい。 | ○脚注： 3[] 
+| `ontap-san-economy` | はい。 | はい。 | Yesfootnote: 4[] | はい。 | Yesfootnote: 3[] | はい。 | Yesfootnote: 3[] 
 |===
 [verse]
-上記の表の脚注： 1 [ ]:Astra Trident 脚注で管理されていません。 2[ ]:Astra Trident で管理されていますが、 PV レベルの細かい脚注ではできません。説明： 4[] ： Raw ブロックボリュームの脚注： 5 [ ]Trident でサポートされています。 CSI でサポートされています
+上記の表の脚注：
+Yesfootnote:1[]：Astra Tridentで管理されない
+Yesfootnote: 2[]：Astra Tridentが管理しますが、PV Granularは管理しません
+Yesfootnote: 3[]：Astra Tridentで管理されず、PV Granularでは管理されない
+Yesfootnote:4[]:raw-blockボリュームでサポート
+Yesfootnote: 5[]：CSI Tridentによるサポート
 
 PV に細分化されていない機能は FlexVol 全体に適用され、 PVS （共有 FlexVol 内の qtree または LUN ）にはすべて共通のスケジュールが適用されます。
 
@@ -99,10 +104,12 @@ Amazon FSX for ONTAP を使用すると、お客様は使い慣れたネット�
 | SolidFire ドライバ | Snapshot | クローン | マルチアタッチ | CHAP | QoS | サイズ変更 | レプリケーション 
 
 
-| `solidfire-san` | はい。 | はい。 | ○脚注： 2 [] | はい。 | はい。 | はい。 | ○脚注： 1[] 
+| `solidfire-san` | はい。 | はい。 | ○脚注： 2 [] | はい。 | はい。 | はい。 | Yesfootnote: 1[] 
 |===
 [verse]
-脚注：はい脚注： 1[] ： Astra Trident で管理されていません。 * 注： 2[] ：未フォーマットのブロックボリュームでサポートされています
+脚注：
+Yesfootnote:1[]：Astra Tridentで管理されない
+Yesfootnote:2[]:raw-blockボリュームでサポート
 
 
 
@@ -117,10 +124,11 @@ Astra Tridentがを使用 `azure-netapp-files` を管理するドライバ link:
 | Azure NetApp Files ドライバ | Snapshot | クローン | マルチアタッチ | QoS | を展開します | レプリケーション 
 
 
-| `azure-netapp-files` | はい。 | はい。 | はい。 | はい。 | はい。 | ○脚注： 1[] 
+| `azure-netapp-files` | はい。 | はい。 | はい。 | はい。 | はい。 | Yesfootnote: 1[] 
 |===
 [verse]
-脚注：はい脚注： 1[] ： Astra Trident で管理されていません
+脚注：
+Yesfootnote:1[]：Astra Tridentで管理されない
 
 
 
@@ -136,13 +144,14 @@ CVSとCVSパフォーマンスのボリュームの最小サイズは100GiBで�
 
 [cols="20,10,10,10,10,10,10"]
 |===
-| CVS for GCP ドライバ | Snapshot | クローン | マルチアタッチ | QoS | を展開します | レプリケーション 
+| CVS for GCPドライバ | Snapshot | クローン | マルチアタッチ | QoS | を展開します | レプリケーション 
 
 
-| `gcp-cvs` | はい。 | はい。 | はい。 | はい。 | はい。 | ○脚注： 1[] 
+| `gcp-cvs` | はい。 | はい。 | はい。 | はい。 | はい。 | Yesfootnote: 1[] 
 |===
 [verse]
-脚注：はい脚注： 1[] ： Astra Trident で管理されていません
+脚注：
+Yesfootnote:1[]：Astra Tridentで管理されない
 
 。 `gcp-cvs` ドライバは仮想ストレージプールを使用します。仮想ストレージプールはバックエンドを抽象化し、 Astra Trident がボリュームの配置を決定できるようにします。管理者が backend.json ファイルに仮想ストレージプールを定義します。ストレージクラスは、ラベルを使用する仮想ストレージプールを識別します。
 
@@ -302,7 +311,8 @@ OpenShift の付加価値クラスタサービスは、クラスタ管理者と�
 
 === ロギングサービス
 
-他の OpenShift サービスと同様に、ログ記録サービスは、 Ansible と、インベントリファイル（別名）で提供される構成パラメータを使用して導入されますホスト。プレイブックに含まれています。ここでは、 OpenShift の初期インストール時にロギングを導入し、 OpenShift のインストール後にロギングを導入するという、 2 つのインストール方法について説明します。
+他の OpenShift サービスと同様に、ログ記録サービスは、 Ansible と、インベントリファイル（別名）で提供される構成パラメータを使用して導入されますホスト。プレイブックに含まれています。インストール方法には、OpenShiftの初期インストール時にログを導入する方法と、OpenShiftが終了した後にログを導入する方法の2つがあります。
+インストール済み。
 
 
 CAUTION: Red Hat OpenShift バージョン 3.9 以降、データ破損に関する懸念があるため、記録サービスに NFS を使用しないことを公式のドキュメントで推奨しています。これは、 Red Hat 製品のテストに基づいています。ONTAP の NFS サーバにはこのような問題はなく、簡単にロギング環境をバックアップできます。ロギングサービスには最終的にどちらかのプロトコルを選択する必要がありますが、両方のプロトコルがネットアッププラットフォームを使用する場合に適していることと、 NFS を使用する理由がないことを確認してください。
@@ -404,7 +414,8 @@ NOTE: 以下の表には、指標サービスに関連するストレージ構�
 | `openshift_metrics_storage_nfs_directory` | NFS エクスポートのマウントパス。たとえば、ボリュームがとしてジャンクションされている場合などです `/openshift_metrics`この変数には、このパスを使用します。 
 
 
-| `openshift_metrics_storage_volume_name` | 名前。例 `pv_ose_metrics`作成するPVの。 
+| `openshift_metrics_storage_volume_name` | 名前、
+例： `pv_ose_metrics`作成するPVの。 
 
 
 | `openshift_metrics_storage_volume_size` | たとえば、NFSエクスポートのサイズ `100Gi`。 

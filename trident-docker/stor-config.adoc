@@ -71,7 +71,7 @@ TIP: 使用しないでください `storagePrefix` （デフォルトを含む�
 |===
 
 
-== ONTAP の設定
+== ONTAP構成
 
 ONTAP を使用する場合は、上記のグローバル構成値に加えて、次のトップレベルオプションを使用できます。
 
@@ -118,7 +118,7 @@ vsadmin
 | `aggregate`  a| 
 プロビジョニング用のアグリゲート（オプション。設定する場合は SVM に割り当てる必要があります）。をクリックします `ontap-nas-flexgroup` ドライバ。このオプションは無視されます。SVM に割り当てられたすべてのアグリゲートを使用して FlexGroup ボリュームがプロビジョニングされます。
  a| 
-aggr1
+アグリゲート1
 
 
 
@@ -146,12 +146,12 @@ myigroup と入力します
 | `limitVolumeSize`  a| 
 最大要求可能ボリュームサイズと qtree 親ボリュームサイズ。*のため `ontap-nas-economy` また、このオプションを使用すると、作成するFlexVol *のサイズも制限されます。
  a| 
-300g
+300 g
 
 
 
 | `qtreesPerFlexvol`  a| 
-FlexVol あたりの最大 qtree 数は [50 、 300] の範囲で指定する必要があります。デフォルトは 200 です。*のため `ontap-nas-economy` ドライバ。このオプションを使用すると、FlexVol あたりの最大qtree数をカスタマイズできます。
+FlexVol あたりの最大 qtree 数は [50 、 300] の範囲で指定する必要があります。デフォルトは 200 です。  *のため `ontap-nas-economy` ドライバ。このオプションを使用すると、FlexVol あたりの最大qtree数をカスタマイズできます。
  a| 
 300
 
@@ -180,7 +180,7 @@ FlexVol あたりの最大 qtree 数は [50 、 300] の範囲で指定する必
 | `snapshotReserve`  a| 
 Snapshot リザーブの割合。 ONTAP のデフォルトを受け入れる場合は、デフォルトで「」になります
  a| 
-10.
+10
 
 
 
@@ -373,9 +373,9 @@ Element ソフトウェア（ NetApp HCI / SolidFire ）を使用する場合は
 
 
 | `Endpoint`  a| 
-\ https://<login>:<password>@<mvip>/json-rpc/<element-version>
+\https：//<login>：<password>@<mvip>/ JSON -RPC /<element-version>
  a| 
-\ https://admin:admin@192.168.160.3/json-rpc/8.0
+\https://admin:admin@192.168.160.3/json-rpc/8.0
 
 
 
@@ -507,7 +507,7 @@ CVS アカウントのシークレットキー（必須）。CVS Web ポータ�
 | `proxyURL`  a| 
 CVS アカウントへの接続にプロキシサーバが必要な場合は、プロキシ URL を指定します。プロキシサーバには、 HTTP プロキシまたは HTTPS プロキシを使用できます。HTTPS プロキシの場合、証明書の検証は省略され、プロキシサーバで自己署名証明書が使用されるようになります。* 認証が有効になっているプロキシサーバーはサポートされていません * 。
  a| 
-「 http://proxy-server-hostname/”
+「http://proxy-server-hostname/”
 
 
 
@@ -565,7 +565,7 @@ NFS アクセスリスト（アドレスおよび CIDR サブネット）。デ�
 | `size`  a| 
 ボリュームサイズ、デフォルトは「 100GiB 」
  a| 
-「 10T 」
+「10T」
 
 |===
 
@@ -727,7 +727,7 @@ NOTE: Azure NetApp Files サービスでは、サイズが 100GB 未満のボリ
 | `size`  a| 
 新しいボリュームのデフォルトサイズ
  a| 
-「 100G 」
+「100G」
 
 |===
 

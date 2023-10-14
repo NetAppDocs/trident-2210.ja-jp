@@ -24,7 +24,7 @@ NOTE: GKE環境でオンデマンドボリュームスナップショットを�
 
 
 
-== 手順1：を作成します `VolumeSnapshotClass`
+== ステップ1： `VolumeSnapshotClass`
 
 次の例は、ボリュームSnapshotクラスを作成します。
 

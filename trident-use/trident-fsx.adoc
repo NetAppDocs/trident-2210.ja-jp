@@ -44,7 +44,7 @@ Astra Trident を初めて使用する場合は、以下のリンクを使用し
 * link:../trident-reco/storage-config-best-practices.html["ネットアップ ONTAP 用に ONTAP 、 Cloud Volumes ONTAP 、 Amazon FSX を設定する際のベストプラクティス"]
 * link:../trident-reco/integrate-trident.html#ontap["Astra Trident を統合"]
 * link:ontap-san.html["ONTAP SAN バックエンド構成"]
-* link:ontap-nas.html["ONTAP NAS バックエンド構成"]
+* link:ontap-nas.html["ONTAP NASバックエンド構成"]
 
 
 ドライバー機能の詳細をご覧ください link:../trident-concepts/ontap-drivers.html["こちらをご覧ください"]。
@@ -143,7 +143,7 @@ NOTE: ファイルシステムにアクセスできる任意の場所から SSH 
 
 バックエンドの作成については、次のリンクを参照してください。
 
-* link:ontap-nas.html["バックエンドに ONTAP NAS ドライバを設定します"]
+* link:ontap-nas.html["ONTAP NASドライバを使用したバックエンドの設定"]
 * link:ontap-san.html["バックエンドに ONTAP SAN ドライバを設定します"]
 
 

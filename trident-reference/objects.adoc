@@ -50,7 +50,9 @@ Trident では、標準仕様に加えて、バックエンド構成で設定し
 | trident.netapp.io/fileSystem | ファイルシステム | ONTAP-SAN、solidfire-san-エコノミー 構成、solidfire-san-SAN間にあるSolidFireを実現します 
 
 
-| trident.netapp.io/cloneFromPVC | cloneSourceVolume の実行中です | ontap - NAS 、 ontap - san 、 solidfire-san-files 、 gcvs 、 ONTAP - SAN - 経済性 
+| trident.netapp.io/cloneFromPVC | cloneSourceVolume の実行中です | ONTAP-NAS、
+ontap-san、solidfire-san、azure-netapp-files、gcp-cvs、
+ONTAP - SAN - 経済性 
 
 
 | trident.netapp.io/splitOnClone | splitOnClone | ONTAP - NAS 、 ONTAP - SAN 
@@ -59,19 +61,24 @@ Trident では、標準仕様に加えて、バックエンド構成で設定し
 | trident.netapp.io/protocol | プロトコル | 任意 
 
 
-| trident.netapp.io/exportPolicy | エクスポートポリシー | ONTAPNAS 、 ONTAPNAS エコノミー、 ONTAP-NAS-flexgroup 
+| trident.netapp.io/exportPolicy | エクスポートポリシー | ONTAP-NAS、
+ontap-nas-economy、ontap-nas-flexgroup 
 
 
-| trident.netapp.io/snapshotPolicy | Snapshot ポリシー | ONTAPNAS 、 ONTAPNAS エコノミー、 ONTAP-NAS-flexgroup 、 ONTAP-SAN 
+| trident.netapp.io/snapshotPolicy | Snapshot ポリシー | ONTAP-NAS、
+ontap-nas-economy、ontap-nas-flexgroup、ontap-SAN 
 
 
-| trident.netapp.io/snapshotReserve | Snapshot リザーブ | ONTAP-NAS 、 ONTAP-NAS-flexgroup 、 ONTAP-SAN 、 GCP-cvs 
+| trident.netapp.io/snapshotReserve | Snapshot リザーブ | ONTAP-NAS、
+ontap-nas-flexgroup、ontap-san、gcp-cvs 
 
 
-| trident.netapp.io/snapshotDirectory | snapshotDirectory の略 | ONTAPNAS 、 ONTAPNAS エコノミー、 ONTAP-NAS-flexgroup 
+| trident.netapp.io/snapshotDirectory | snapshotDirectory の略 | ONTAP-NAS、
+ontap-nas-economy、ontap-nas-flexgroup 
 
 
-| trident.netapp.io/unixPermissions | unixPermissions | ONTAPNAS 、 ONTAPNAS エコノミー、 ONTAP-NAS-flexgroup 
+| trident.netapp.io/unixPermissions | unixPermissions | ONTAP-NAS、
+ontap-nas-economy、ontap-nas-flexgroup 
 
 
 | trident.netapp.io/blockSize | ブロックサイズ | solidfire - SAN 
@@ -80,7 +87,7 @@ Trident では、標準仕様に加えて、バックエンド構成で設定し
 
 Trident では CSI 仕様を使用したボリュームスナップショットの作成がサポートされています。ボリュームスナップショットを作成し、それをデータソースとして使用して既存の PVC のクローンを作成できます。これにより、 PVS のポイントインタイムコピーを Kubernetes にスナップショットの形で公開できます。作成した Snapshot を使用して新しい PVS を作成できます。を参照してください `+On-Demand Volume Snapshots+` これがどのように機能するかを確認します。
 
-Tridentが提供するのも `cloneFromPVC` および `splitOnClone` クローンを作成するためのアノテーションCSI 実装（ Kubernetes 1.13 以前）を使用しなくても、または Kubernetes リリースがベータ版のボリュームスナップショット（ Kubernetes 1.16 以前）をサポートしていない場合は、これらのアノテーションを使用して PVC のクローンを作成できます。Trident 19.10 は、 PVC からのクローニングの CSI ワークフローをサポートしていることに注意してください。
+Tridentが提供するのも `cloneFromPVC` および `splitOnClone` クローンを作成するためのアノテーションこれらのアノテーションを使用すると、CSI実装（Kubernetes 1.13以前）を使用せずにPVCをクローニングできます。また、KubernetesリリースでボリュームSnapshotのベータ版がサポートされていない場合（Kubernetes 1.16以前）も同様です。Trident 19.10 は、 PVC からのクローニングの CSI ワークフローをサポートしていることに注意してください。
 
 
 NOTE: を使用できます `cloneFromPVC` および `splitOnClone` CSI Tridentの注釈と従来のCSI以外のフロントエンド。
@@ -146,13 +153,16 @@ volumeBindingMode: Immediate
 | 属性（ Attributes ） | [string] 文字列をマップします | いいえ | 後述の「属性」セクションを参照してください 
 
 
-| ストレージプール | [string] StringList をマップします | いいえ | 内のストレージプールのリストへのバックエンド名のマッピング 
+| ストレージプール | [string] StringList をマップします | いいえ | バックエンド名とリストのマッピング
+ストレージプール 
 
 
-| AdditionalStoragePools | [string] StringList をマップします | いいえ | 内のストレージプールのリストへのバックエンド名のマッピング 
+| AdditionalStoragePools | [string] StringList をマップします | いいえ | バックエンド名のマップ
+ストレージプールノリスト 
 
 
-| excludeStoragePools | [string] StringList をマップします | いいえ | 内のストレージプールのリストへのバックエンド名のマッピング 
+| excludeStoragePools | [string] StringList をマップします | いいえ | ハツクエントメイノマツヒンク
+ストレージプールノリスト 
 |===
 ストレージ属性とその有効な値は、ストレージプールの選択属性と Kubernetes 属性に分類できます。
 
@@ -203,7 +213,8 @@ ONTAPNAS、ONTAPNASエコノミー、ONTAP-NAS-flexgroup、ONTAPSAN、solidfire-
 
 を使用できます `excludeStoragePools` Tridentがプロビジョニングに使用する一連のプールをフィルタリングするためのパラメータ。このパラメータを使用すると、一致するプールがすべて削除されます。
 
-を参照してください `storagePools` および `additionalStoragePools` パラメータを指定すると、各エントリの形式がになります `<backend>:<storagePoolList>`、ここで `<storagePoolList>` は、指定したバックエンドのストレージプールをカンマで区切ったリストです。たとえば、の値などです `additionalStoragePools` 次のように表示されます `ontapnas_192.168.1.100:aggr1,aggr2;solidfire_192.168.1.101:bronze`。これらのリストでは、バックエンド値とリスト値の両方に正規表現値を使用できます。を使用できます `tridentctl get backend` バックエンドとそのプールのリストを取得します。
+を参照してください `storagePools` および `additionalStoragePools` パラメータを指定すると、各エントリの形式がになります `<backend>:<storagePoolList>`、ここで `<storagePoolList>` は、指定したバックエンドのストレージプールをカンマで区切ったリストです。たとえば、の値などです `additionalStoragePools` 次のように表示されます `ontapnas_192.168.1.100:aggr1,aggr2;solidfire_192.168.1.101:bronze`。
+これらのリストでは、バックエンド値とリスト値の両方に正規表現値を使用できます。を使用できます `tridentctl get backend` バックエンドとそのプールのリストを取得します。
 
 
 
@@ -213,10 +224,12 @@ ONTAPNAS、ONTAPNASエコノミー、ONTAP-NAS-flexgroup、ONTAPSAN、solidfire-
 
 [cols=",,,,,"]
 |===
-| 属性 | を入力します | 値 | 説明 | 関連するドライバ | Kubernetes のバージョン 
+| 属性 | を入力します | 値 | 説明 | 関連するドライバ | Kubernetes
+バージョン 
 
 
-| FSstype （英語） | 文字列 | ext4 、 ext3 、 xfs など | ブロックボリュームのファイルシステムのタイプ | solidfire-san-group、ontap/nas、ontap -nas-エコノミー、ontap -nas-flexgroup、ontap -san、ONTAP - SAN -経済性 | すべて 
+| FSstype （英語） | 文字列 | ext4 、 ext3 、 xfs など | ブロックのファイルシステムタイプ
+個のボリューム | solidfire-san-group、ontap/nas、ontap -nas-エコノミー、ontap -nas-flexgroup、ontap -san、ONTAP - SAN -経済性 | すべて 
 
 
 | allowVolumeExpansion の略 | ブール値 | true false | PVC サイズの拡張のサポートをイネーブルまたはディセーブルにします | ONTAPNAS 、 ONTAPNAS エコノミー、 ONTAP-NAS-flexgroup 、 ONTAPSAN 、 ONTAP-SAN-エコノミー 、 solidfire-san-, gcvs, azure-netapp-files | 1.11 以上 
@@ -400,7 +413,8 @@ TIP: 関連付けられた Snapshot がある PV を削除すると、対応す�
 |===
 Tridentが生成 `internalName` ボリュームを作成する場合。この構成は 2 つのステップで構成されます。最初に、ストレージプレフィックス（デフォルトのプレフィックス）を先頭に追加します `trident` またはバックエンド構成内のプレフィックス）をボリューム名に変更して、形式の名前を指定します `<prefix>-<volume-name>`。その後、名前の完全消去が行われ、バックエンドで許可されていない文字が置き換えられます。ONTAP バックエンドの場合、ハイフンをアンダースコアに置き換えます（内部名はになります） `<prefix>_<volume-name>`）。Element バックエンドの場合、アンダースコアはハイフンに置き換えられます。
 
-ボリューム構成を使用してREST APIを使用してボリュームを直接プロビジョニングできますが、Kubernetes環境ではほとんどのユーザが標準のKubernetesを使用することを想定しています `PersistentVolumeClaim` メソッドTrident は、プロビジョニングプロセスの一環として、このボリュームオブジェクトを自動的に作成します。
+ボリューム構成を使用してREST APIを使用してボリュームを直接プロビジョニングできますが、Kubernetes環境ではほとんどのユーザが標準のKubernetesを使用することを想定しています `PersistentVolumeClaim` メソッドプロビジョニングの一環としてTridentがこのボリュームオブジェクトを自動的に作成
+プロセス：
 
 
 
@@ -442,7 +456,8 @@ Snapshot はボリュームのポイントインタイムコピーで、新し�
 
 NOTE: Kubernetes では、これらのオブジェクトが自動的に管理されます。Trident がプロビジョニングしたものを表示できます。
 
-Kubernetesを導入したとき `VolumeSnapshot` オブジェクト要求が作成されると、TridentはバッキングストレージシステムにSnapshotオブジェクトを作成することで機能します。。 `internalName` このSnapshotオブジェクトのプレフィックスを組み合わせると、が生成されます `snapshot-` を使用 `UID` の `VolumeSnapshot` オブジェクト（例： `snapshot-e8d8a0ca-9826-11e9-9807-525400f3f660`）。 `volumeName` および `volumeInternalName` バッキングボリュームの詳細を取得して格納されます。
+Kubernetesを導入したとき `VolumeSnapshot` オブジェクト要求が作成されると、TridentはバッキングストレージシステムにSnapshotオブジェクトを作成することで機能します。。 `internalName` このSnapshotオブジェクトのプレフィックスを組み合わせると、が生成されます `snapshot-` を使用 `UID` の `VolumeSnapshot` オブジェクト（例： `snapshot-e8d8a0ca-9826-11e9-9807-525400f3f660`）。 `volumeName` および `volumeInternalName` 裏付けの詳細を取得することで入力されます。
+ボリューム：
 
 
 

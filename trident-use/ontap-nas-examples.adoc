@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: trident-use/ontap-nas-examples.html 
 keywords: map backends, storage classes, trident backend, ontap-nas, ontap-nas-economy, ontap-nas-flexgroups, options, storageclasses, fsx 
-summary: ONTAP NAS ドライバを作成して Astra Trident インストールで使用する方法をご確認ください。このセクションでは、バックエンド構成の例と、バックエンドをストレージクラスにマッピングする方法を詳しく説明します。 
+summary: Astra Tridentのインストール環境でONTAP NASドライバを作成して使用する方法について説明します。このセクションでは、バックエンド構成の例と、バックエンドをストレージクラスにマッピングする方法を詳しく説明します。 
 ---
 = ONTAP NASの設定オプションと例
 :hardbreaks:
@@ -11,7 +11,7 @@ summary: ONTAP NAS ドライバを作成して Astra Trident インストール�
 :imagesdir: ../media/
 
 
-ONTAP NAS ドライバを作成して Astra Trident インストールで使用する方法をご確認ください。このセクションでは、バックエンド構成の例と、バックエンドをストレージクラスにマッピングする方法を詳しく説明します。
+Astra Tridentのインストール環境でONTAP NASドライバを作成して使用する方法について説明します。このセクションでは、バックエンド構成の例と、バックエンドをストレージクラスにマッピングする方法を詳しく説明します。
 
 
 
@@ -33,7 +33,9 @@ ONTAP NAS ドライバを作成して Astra Trident インストールで使用�
 | `backendName` | カスタム名またはストレージバックエンド | ドライバ名 + "_" + データ LIF 
 
 
-| `managementLIF` | クラスタ管理LIFまたはSVM管理LIFのIPアドレス：シームレスなMetroCluster スイッチオーバーを実現するには、SVM管理LIFを指定する必要があります。 | 「 10.0.0.1 」、「 [2001:1234:abcd::fefe] 」 
+| `managementLIF` | クラスタ管理 LIF または SVM 管理 LIF の IP アドレス
+
+MetroClusterのシームレスなスイッチオーバーを実現するには、SVM管理LIFを指定する必要があります。 | 「 10.0.0.1 」、「 [2001:1234:abcd::fefe] 」 
 
 
 | `dataLIF` | プロトコル LIF の IP アドレス。IPv6 には角かっこを使用します。設定後に更新することはできません | 特に指定がないかぎり、 SVM が派生します 
@@ -75,7 +77,7 @@ ONTAP NAS ドライバを作成して Astra Trident インストールで使用�
 | `limitAggregateUsage` | 使用率がこの割合を超えている場合は、プロビジョニングが失敗します。* Amazon FSX for ONTAP * には適用されません | “”（デフォルトでは適用されません） 
 
 
-| `limitVolumeSize` | 要求されたボリュームサイズがこの値を超えている場合、プロビジョニングが失敗します。 | “”（デフォルトでは適用されません） 
+| `limitVolumeSize` | 要求されたボリュームサイズがこの値を超えている場合、プロビジョニングが失敗します。 | ""（デフォルトでは適用されません） 
 
 
 | `lunsPerFlexvol` | FlexVol あたりの最大 LUN 数。有効な範囲は 50 、 200 です | 100 
@@ -87,13 +89,15 @@ ONTAP NAS ドライバを作成して Astra Trident インストールで使用�
 | `nfsMountOptions` | NFS マウントオプションをカンマで区切ったリスト | 「」 
 
 
-| `qtreesPerFlexvol` | FlexVol あたりの最大 qtree 数。有効な範囲は [50 、 300] です。 | 200 
+| `qtreesPerFlexvol` | FlexVol あたりの最大 qtree 数。有効な範囲は [50 、 300] です。 | 「200」 
 
 
-| `useREST` | ONTAP REST API を使用するためのブーリアンパラメータ。*テクニカルプレビュー*はMetroCluster ではサポートされていません。 | いいえ 
+| `useREST` | ONTAP REST API を使用するためのブーリアンパラメータ。* テクニカルプレビュー *
+
+MetroClusterではサポートされません。 | いいえ 
 |===
 [WARNING]
-.<code>useREST</code>の考慮事項
+.<code>useREST</code> 考慮事項
 ====
 * `useREST` は、**テクニカルプレビュー**として提供されています。テスト環境では、本番環境のワークロードでは推奨されません。に設定すると `true`Astra Tridentは、ONTAP REST APIを使用してバックエンドと通信します。この機能を使用するには、ONTAP 9.10以降が必要です。また、使用するONTAP ログインロールにはへのアクセス権が必要です `ontap` アプリケーション：これは事前定義されたによって満たされます `vsadmin` および `cluster-admin` ロール。
 * `useREST` は、MetroCluster ではサポートされていません。
@@ -150,25 +154,31 @@ NOTE: Tridentから、を使用して作成したすべてのボリュームの�
 | `qosPolicy` | 作成したボリュームに割り当てる QoS ポリシーグループ。ストレージプール / バックエンドごとに QOSPolicy または adaptiveQosPolicy のいずれかを選択します | 「」 
 
 
-| `adaptiveQosPolicy` | アダプティブ QoS ポリシーグループ：作成したボリュームに割り当てます。ストレージプール / バックエンドごとに QOSPolicy または adaptiveQosPolicy のいずれかを選択します。経済性に影響する ONTAP - NAS ではサポートされません。 | 「」 
+| `adaptiveQosPolicy` | アダプティブ QoS ポリシーグループ：作成したボリュームに割り当てます。ストレージプール / バックエンドごとに QOSPolicy または adaptiveQosPolicy のいずれかを選択します。
+
+経済性に影響する ONTAP - NAS ではサポートされません。 | 「」 
 
 
-| `snapshotReserve` | スナップショット "0" 用に予約されたボリュームの割合 | 状況 `snapshotPolicy` は「none」、それ以外は「」です。 
+| `snapshotReserve` | Snapshot「0」用にリザーブされているボリュームの割合 | 状況 `snapshotPolicy` は「none」、それ以外は「」です。 
 
 
 | `splitOnClone` | 作成時にクローンを親からスプリットします | いいえ 
 
 
-| `encryption` | 新しいボリュームでNetApp Volume Encryption（NVE）を有効にします。デフォルトはです `false`。このオプションを使用するには、クラスタで NVE のライセンスが設定され、有効になっている必要があります。NAEがバックエンドで有効になっている場合は、Astra TridentでプロビジョニングされたすべてのボリュームがNAEに有効になります。詳細については、以下を参照してください。 link:../trident-reco/security-reco.html["Astra TridentとNVEおよびNAEの相互運用性"]。 | いいえ 
+| `encryption` | 新しいボリュームでNetApp Volume Encryption（NVE）を有効にします。デフォルトはです `false`。このオプションを使用するには、クラスタで NVE のライセンスが設定され、有効になっている必要があります。
+
+NAEがバックエンドで有効になっている場合は、Astra TridentでプロビジョニングされたすべてのボリュームがNAEに有効になります。
+
+詳細については、以下を参照してください。 link:../trident-reco/security-reco.html["Astra TridentとNVEおよびNAEの相互運用性"]。 | いいえ 
 
 
 | `securityStyle` | 新しいボリュームのセキュリティ形式 | 「 UNIX 」 
 
 
-| `tieringPolicy` | 「なし」を使用する階層化ポリシー | ONTAP 9.5 よりも前の SVM-DR 構成の「スナップショットのみ」 
+| `tieringPolicy` | 「none」を使用する階層化ポリシー | ONTAP 9.5 よりも前の SVM-DR 構成の「スナップショットのみ」 
 
 
-| unixPermissions | 新しいボリュームのモード | 777 
+| unixPermissions | 新しいボリュームのモード | 「777」 
 
 
 | Snapshot ディレクトリ | の表示/非表示を制御します `.snapshot` ディレクトリ | いいえ 

@@ -301,7 +301,7 @@ Azure NetApp Files ドライバの volume create オプションには、次の�
 
 === 例
 
-* 200GiB ボリュームを作成します。
+* 200GiBのボリュームを作成します。
 +
 [listing]
 ----

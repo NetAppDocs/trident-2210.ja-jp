@@ -52,7 +52,8 @@ kubectl get tbc -n trident
 ----
 kubectl apply -f <updated-secret-file.yaml> -n trident
 ----
-* パラメータ（使用する ONTAP SVM の名前など）を更新する必要があります。この場合、 `TridentBackendConfig` オブジェクトはKubernetesを使用して直接更新できます。
+* パラメータ（使用する ONTAP SVM の名前など）を更新する必要があります。
+この場合、 `TridentBackendConfig` オブジェクトはKubernetesを使用して直接更新できます。
 
 
 [listing]

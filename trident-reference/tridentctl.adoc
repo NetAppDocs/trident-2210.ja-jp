@@ -112,7 +112,10 @@ Usage:
 * `volume`：Astra Tridentから1つ以上のボリュームを取得
 
 
-`volume` フラグ：* ``-h, --help`：ボリュームのヘルプ。* `--parentOfSubordinate string`：クエリを下位のソースボリュームに制限します。* `--subordinateOf string`:クエリをボリュームの下位に制限します。
+`volume` フラグ：
+* ``-h, --help`：ボリュームのヘルプ。
+* `--parentOfSubordinate string`：クエリを下位のソースボリュームに制限します。
+* `--subordinateOf string`:クエリをボリュームの下位に制限します。
 
 
 
@@ -125,7 +128,8 @@ Usage:
 Usage:
   tridentctl images [flags]
 ----
-フラグ：* ``-h, --help`: Help for images.
+フラグ：
+* ``-h, --help`: Help for images.
 * ``-v ,--k8s-version string`：Kubernetesクラスタのセマンティックバージョン。
 
 
@@ -174,7 +178,7 @@ Usage:
 * ``--kubelet-dir string`: kubeletの内部状態のホストの場所(デフォルトは/var/lib/kubelet )
 * ``--log-format string`: Astra Tridentのログ形式(テキスト、JSON](デフォルトは「text」)。
 * ``--pv string`: Astra Tridentが使用するレガシーPVの名前は、存在しないことを確認します(デフォルトは"trident")。
-* ``--pvc string`: Astra Tridentが使用するレガシーPVCの名前は、存在しないことを確認します(デフォルトは"trident")。
+* ``--pvc string`：Astra Tridentで使用されている従来のPVCの名前。このPVCが存在しないことを確認します（デフォルトは「trident」）。
 * ``--silence-autosupport`：AutoSupport バンドルを自動的にネットアップに送信しない（デフォルトはtrue）。
 * ``--silent`:インストール中は、ほとんどの出力を無効にします。
 * ``--trident-image string`：インストールするAstra Tridentのイメージ
@@ -228,7 +232,9 @@ Usage:
 Usage:
   tridentctl uninstall [flags]
 ----
-フラグ：* `-h, --help`:アンインストールのヘルプ。* `--silent`:アンインストール中のほとんどの出力を無効にします。
+フラグ：
+* `-h, --help`:アンインストールのヘルプ。
+* `--silent`:アンインストール中のほとんどの出力を無効にします。
 
 
 
@@ -269,4 +275,6 @@ tridentctl upgrade [option]
 Usage:
   tridentctl version [flags]
 ----
-フラグ：* `--client`:クライアントバージョンのみ(サーバは不要)。* `-h, --help`:バージョンのヘルプ。
+フラグ：
+* `--client`:クライアントバージョンのみ(サーバは不要)。
+* `-h, --help`:バージョンのヘルプ。

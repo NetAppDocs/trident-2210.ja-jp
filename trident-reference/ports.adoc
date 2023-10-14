@@ -27,7 +27,7 @@ Astra Trident は次のポート経由で通信：
 | 8001 | Prometheus 指標エンドポイント 
 
 
-| 8000 | Trident REST サーバ 
+| 8、000 | Trident REST サーバ 
 
 
 | 17546 | Trident デミ作用 / レディネスプローブポートは、 Trident デミ作用ポッドで使用されます 

@@ -66,7 +66,8 @@ Astra Trident を、クラスタを対象としたオペレータを使用する
 このセクションでは、名前空間を対象とした演算子を使用してインストールされる、 20.07 ～ 20.10 の範囲の Astra Trident リリースへのダウングレード手順を要約します。
 
 .手順
-. link:uninstall-trident.html["Astra Trident をアンインストール"^]。**既存のインストールを完全に削除する場合を除き、CRDを削除しないでください。**必ずを確認してください `tridentorchestrator` が削除されました。
+. link:uninstall-trident.html["Astra Trident をアンインストール"^]。** 既存のインストールを完全に削除する場合を除き、 CRD を削除しないでください。 **
+次を確認します。 `tridentorchestrator` が削除されました。
 +
 [listing]
 ----
@@ -128,7 +129,7 @@ NOTE: ダウングレードを開始する前に、Kubernetesクラスタのス�
 .. 「* A」が表示されない場合 `tridentOrchestrator`、（または）A `tridentprovisioner`、（または）という名前のポッド `trident-operator-xxxxxxxxxx-xxxxx`を使用して、Astra Trident *をインストールします `tridentctl`。
 
 
-. 既存のを使用してAstra Tridentをアンインストール `tridentctl` バイナリ。この場合は、 21.07 バイナリを使用してアンインストールします。
+. 既存のを使用してAstra Tridentをアンインストール `tridentctl` バイナリ。  この場合は、 21.07 バイナリを使用してアンインストールします。
 +
 [listing]
 ----

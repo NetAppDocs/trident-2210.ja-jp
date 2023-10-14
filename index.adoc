@@ -4,7 +4,7 @@ sidebar: sidebar
 permalink: index.html 
 summary: 概要。検索結果に使用されます 
 ---
-= Trident 10月22日
+= Astra Trident 22.10
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 

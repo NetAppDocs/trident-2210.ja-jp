@@ -3452,7 +3452,6 @@
   <block id="74d7347d2d8b4324553eb6d881988fbd" category="list-text">registry.k8s.io/sig-storage/csi-provisioner：v3.3.0</block>
   <block id="e42bb43c53b774cb18202277627ded6a" category="list-text">registry.k8s.io/sig-storage/csi-attacher：v4.0.0</block>
   <block id="b21bbc0cbede5460307bb0a474f8606c" category="list-text">registry.k8s.io/sig-storage/csi-resizer：v1.6.0</block>
-  <block id="63ecb6130cad9815e1932d6c6dd2fd48" category="list-text">registry.k8s.io/sig-storage/csi-snapshotter：v3.0.3</block>
   <block id="730890f7a33619a5f272f2ed9a434ed0" category="list-text">registry.k8s.io/sig-storage/csi-node-driver-registrar：v2.5.1</block>
   <block id="4dfe67785205ed3d7f2cb3ca8eafaa68" category="list-text">docker.io/netapp/trident-operator：22.10.0（オプション）</block>
   <block id="52009bb7ee17227f566cd26a02caee56" category="inline-link-macro"><block ref="52009bb7ee17227f566cd26a02caee56" category="inline-link-rx"></block></block>
@@ -3468,4 +3467,5 @@
   <block id="1dedbfd605df8b562acc8f759a8e9acc" category="list-text">を実行するKubernetesクラスタ <block ref="229e1052bb9ecd8cf2680d6f44691174" category="inline-link-macro-rx"></block></block>
   <block id="daeed8b959c87c723c9a96bfb5a96851" category="list-text">Trident をで使用する際によく発生する問題です<block ref="24a785881ff1cdf191a2239811dc9597" category="inline-link-rx"></block> テナントとクライアントのシークレットが、必要な権限がないアプリケーションの登録から取得された場合です。Trident の要件の詳細については、を参照してください <block ref="e08bee233140d24c18d95885ad07d2bb" category="inline-link-macro-rx"></block> 設定</block>
   <block id="3e9e53a916f99df7d6286c52e3b7a9d5" category="paragraph">Trident では、デフォルトでマウントオプションが Kubernetes でどの値にも設定されていません。Kubernetes ストレージクラスでマウントオプションを指定するには、次の例を実行します<block ref="fe27d7e6fa26e46ae96377664e7dbdff" category="inline-link-rx"></block>。</block>
+  <block id="c60d7bfd38dc514d4e2eaa66c5a0a5fd" category="list-text">registry.k8s.io/sig-storage/csi-snapshotter：v6.1.0</block>
 </blocks>

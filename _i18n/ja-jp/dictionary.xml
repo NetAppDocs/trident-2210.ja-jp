@@ -3497,8 +3497,6 @@ Astra Tridentを完全に削除し（作成したCRDを含む）、スレート�
   <block id="14340f3a4eb25a54f8446036d807d7c8" category="paragraph">Astra Trident は、正式にサポートされているネットアップのプロジェクトです。任意の標準メカニズムを使用してネットアップに連絡し、必要なエンタープライズクラスのサポートを受けることができます。</block>
   <block id="1b3d6decfa71cc52ecc9b041f40a02e5" category="paragraph">また、ネットアップのアストラには、コンテナユーザ（Astra Trident開発者を含む）の活気あるパブリックコミュニティもあります <block ref="6130664377fa14615bb1abd5257e9714" category="inline-link-macro-rx"></block>。プロジェクトに関する一般的な質問をしたり、同じような気のある同僚と関連するトピックについて話し合うのには、この場所が最適です。</block>
   <block id="34c4dac14496e9c45d92f345d9392fc8" category="summary">最新バージョンを実行していない場合は、以前のリリースの Astra Trident のドキュメントを参照できます。</block>
-  <block id="54ea7e6338e0f0344fe8c3d401d1f7d8" category="paragraph">Astra Trident 22.10を実行していない場合は、以前のリリースのドキュメントを参照できます。バージョンセレクタを使用して、最新バージョンと以前の4つのバージョンを切り替えることも、以下のリンクを使用することもできます。</block>
-  <block id="9f687b4e8cbf2fbb623b26b30fd92717" category="admonition">21.07 より前のリリースでは、レガシードキュメントサイトにリダイレクトされます。</block>
   <block id="21d437ff7c8ceb5481603b5d2c05442a" category="inline-link">トライデント22.07年アストラト</block>
   <block id="8a7908446b584a99ce1055c602a9c74e" category="list-text"><block ref="8a7908446b584a99ce1055c602a9c74e" category="inline-link-rx"></block></block>
   <block id="c53358822905bb04d312060d1cb568af" category="inline-link">トライデント22.04アストラ</block>
@@ -3509,26 +3507,6 @@ Astra Tridentを完全に削除し（作成したCRDを含む）、スレート�
   <block id="606b9e83fb467a43b3065d4fd5037094" category="list-text"><block ref="606b9e83fb467a43b3065d4fd5037094" category="inline-link-rx"></block></block>
   <block id="a93e9e44b7a375a4236260f5ff2b251e" category="inline-link">Astra Trident 21.07</block>
   <block id="3830d427e146a8a64454dc373d9b1502" category="list-text"><block ref="3830d427e146a8a64454dc373d9b1502" category="inline-link-rx"></block></block>
-  <block id="0c141ec81d4107f4c63fb0deb2531c0d" category="inline-link">Astra Trident 21.04</block>
-  <block id="193bfae1ebda99fb7289c66fa69395a0" category="list-text"><block ref="193bfae1ebda99fb7289c66fa69395a0" category="inline-link-rx"></block></block>
-  <block id="cba2c660d905f83e39a0d1771286c9e7" category="inline-link">Astra Trident 21.01</block>
-  <block id="97f32ab1a5165dc49105dca53b9f4de7" category="list-text"><block ref="97f32ab1a5165dc49105dca53b9f4de7" category="inline-link-rx"></block></block>
-  <block id="727d2d1e15a5c7260e90c50b1c250a4c" category="inline-link">Astra Trident 20.10</block>
-  <block id="8a0315074645cbbab67a7445dcdf42f2" category="list-text"><block ref="8a0315074645cbbab67a7445dcdf42f2" category="inline-link-rx"></block></block>
-  <block id="bad2b8fa41c05085668e48d7c14968dc" category="inline-link">Astra Trident 20.07</block>
-  <block id="449d7e957347de63ee3d9841c40b4e7f" category="list-text"><block ref="449d7e957347de63ee3d9841c40b4e7f" category="inline-link-rx"></block></block>
-  <block id="7c0a09ca9ea4472728e4661755a43c6b" category="inline-link">Astra Trident 20.04</block>
-  <block id="8a72b28486832ed8c725617460afbdcb" category="list-text"><block ref="8a72b28486832ed8c725617460afbdcb" category="inline-link-rx"></block></block>
-  <block id="1dc5429c6c86712d7628beb5652a0e2e" category="inline-link">Astra Trident 20.01</block>
-  <block id="23204facdc38bad335a6afce81db0827" category="list-text"><block ref="23204facdc38bad335a6afce81db0827" category="inline-link-rx"></block></block>
-  <block id="5b2d210bf907d26b59abbaa0e22fbbe6" category="inline-link">Astra Trident 19.10</block>
-  <block id="3377906a52734323c44c8f31b2d29e63" category="list-text"><block ref="3377906a52734323c44c8f31b2d29e63" category="inline-link-rx"></block></block>
-  <block id="f1d7fe87216a18ff3ffcfa98d6065689" category="inline-link">Astra Trident 19.07</block>
-  <block id="12e29d431cea2700aa9d89e0c89e67bc" category="list-text"><block ref="12e29d431cea2700aa9d89e0c89e67bc" category="inline-link-rx"></block></block>
-  <block id="fe4bdabecc64b786523a3d86bb1f9cfd" category="inline-link">Astra Trident 19.04</block>
-  <block id="e43783d5a51a10670edf444f0b58b6af" category="list-text"><block ref="e43783d5a51a10670edf444f0b58b6af" category="inline-link-rx"></block></block>
-  <block id="5e152ff33f3262612abc4b942db27ad1" category="inline-link">Astra Trident 19.01</block>
-  <block id="977636e26059252def0425dca74811ef" category="list-text"><block ref="977636e26059252def0425dca74811ef" category="inline-link-rx"></block></block>
   <block id="271eadf9144a35af6e28eb2db28db36c" category="sidebar">Astra Trident は、ネットアップが管理しているオープンソースのストレージプロビジョニングおよびオーケストレーションツールです。このコンテナを使用すると、 Docker と Kubernetes で管理されるコンテナ化アプリケーション用のストレージボリュームを作成できます。**リリースノートを読み、Astra Trident 22.10.**へのアップグレードに関する重要な情報を確認してください</block>
   <block id="4af24ef347bd91e92dfb805df610386f" category="sidebar">22.10リリースの重要な情報</block>
   <block id="7d0ee6fed10d3d4e5c9ee496729ab519" category="sidebar">リリースノート</block>
@@ -3559,4 +3537,5 @@ Astra Tridentを完全に削除し（作成したCRDを含む）、スレート�
   <block id="324fb1352ffffb105d10013810c42896" category="sidebar">Kubernetes と Astra Trident オブジェクト</block>
   <block id="c949166d6970748c0094c800daa3324a" category="sidebar">Trident で Astra を管理</block>
   <block id="0460583622f03a52d7693094d6fa2452" category="sidebar">概念</block>
+  <block id="d1f45feb97a5ae19aab521346929140a" category="paragraph">Astra Trident 22.10を実行していない場合は、以前のリリースのドキュメントを参照できます。</block>
 </blocks>
